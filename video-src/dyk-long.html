@@ -1,0 +1,119 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="base.css">
+<style>
+@font-face{font-family:Alexandria;src:url(alex-ar.woff2) format("woff2");font-weight:100 900}
+.ar{font-family:Alexandria,sans-serif}
+#s1 .eyebrow{position:absolute;left:0;right:0;top:400px}
+#s1 .h1{position:absolute;left:0;right:0;top:470px}
+#grid{position:absolute;top:800px;left:70px;right:70px;display:grid;grid-template-columns:1fr 1fr;gap:34px}
+.grid .card{height:410px}
+.grid .card .emoji{font-size:160px}
+.grid .card .name{font-size:48px;font-weight:600;letter-spacing:-.02em}
+#s2 .emoji{font-size:300px;text-align:center;margin-top:430px}
+.center{text-align:center}
+.label{margin:60px 80px 0;background:#ECF4EF;color:#0F1F14;border-radius:28px;padding:50px 54px;font-family:GMono,monospace;font-size:38px;line-height:1.6;position:relative}
+.label h4{font-size:30px;letter-spacing:.18em;margin-bottom:14px;color:#3A5A48}
+.hl{position:relative;display:inline;background-image:linear-gradient(#6EC38C,#6EC38C);background-repeat:no-repeat;background-size:0% 100%;padding:0 4px;border-radius:6px}
+#nogrid{position:absolute;top:620px;left:70px;right:70px;display:grid;grid-template-columns:1fr 1fr;gap:34px}
+</style></head><body><div class="stage">
+
+<div id="s1" class="scene">
+ <div class="eyebrow mono">Did you know?</div>
+ <div class="h1"><span>These</span> <span>are</span> <span>all</span><br><span>nightshades.</span></div>
+ <div id="grid" class="grid">
+  <div class="card"><div class="emoji">🍅</div><div class="name">Tomato</div><div class="tag mono">Nightshade</div></div>
+  <div class="card"><div class="emoji">🥔</div><div class="name">Potato</div><div class="tag mono">Nightshade</div></div>
+  <div class="card"><div class="emoji">🍆</div><div class="name">Eggplant</div><div class="tag mono">Nightshade</div></div>
+  <div class="card"><div class="emoji">🫑</div><div class="name">Bell pepper</div><div class="tag mono">Nightshade</div></div>
+ </div>
+</div>
+
+<div id="s2" class="scene">
+ <div class="emoji">🌶️</div>
+ <div class="h2" style="margin-top:40px"><span>Even</span> <span>the</span> <span>spice</span> <span>jar.</span></div>
+ <div class="center" style="margin-top:40px"><span class="chip">Paprika</span><span class="chip">Chili flakes</span><span class="chip">Cayenne</span></div>
+ <div class="p" style="margin-top:30px">All ground from <i>Capsicum</i> peppers.</div>
+</div>
+
+<div id="s3" class="scene">
+ <div class="eyebrow mono" style="margin-top:400px">Read the label</div>
+ <div class="h2" style="margin-top:24px"><span>They</span> <span>hide</span> <span>in</span> <span>plain</span> <span>sight.</span></div>
+ <div class="label"><h4>INGREDIENTS</h4>Wheat flour, sunflower oil, salt, <span class="hl" id="hl1">potato starch</span>, <span class="hl" id="hl2">spices</span>, <span class="hl" id="hl3">paprika extract</span>, onion powder.</div>
+ <div class="p" style="margin-top:44px">"Spices" can include paprika or chili.</div>
+</div>
+
+<div id="s4" class="scene">
+ <div class="eyebrow mono" style="margin-top:420px">Same family, too</div>
+ <div class="h2" style="margin-top:24px"><span>Meet</span> <span>the</span> <span>cousins.</span></div>
+ <div class="center" style="margin-top:70px">
+  <span class="chip">Harankash <span class="ar" style="color:var(--brand)">حرنكش</span></span><br>
+  <span class="chip">Goji berries</span><br>
+  <span class="chip">Tomatillo</span><br>
+  <span class="chip">Ashwagandha</span>
+ </div>
+ <div class="p" style="margin-top:40px">Harankash = cape gooseberry (<i>Physalis</i>).</div>
+</div>
+
+<div id="s5" class="scene">
+ <div class="eyebrow mono" style="position:absolute;left:0;right:0;top:400px">Plot twist</div>
+ <div class="h2" style="position:absolute;left:0;right:0;top:460px"><span>Not</span> <span>nightshades.</span></div>
+ <div id="nogrid" class="grid" style="top:660px">
+  <div class="card"><div class="emoji">🍠</div><div class="name">Sweet potato</div><div class="tag no mono">Not a nightshade</div></div>
+  <div class="card"><div class="emoji">🥒</div><div class="name">Cucumber</div><div class="tag no mono">Not a nightshade</div></div>
+  <div class="card"><div class="emoji">🍄</div><div class="name">Mushroom</div><div class="tag no mono">Not a nightshade</div></div>
+  <div class="card"><div class="emoji">🧅</div><div class="name">Onion</div><div class="tag no mono">Not a nightshade</div></div>
+ </div>
+ <div class="p" style="position:absolute;left:0;right:0;top:1580px">Black pepper? Different plant entirely.</div>
+</div>
+
+<div id="s6" class="scene">
+ <div class="h2" style="margin-top:620px"><span>How</span> <span>many</span> <span>did</span><br><span>you</span> <span>know?</span></div>
+ <div class="p" style="margin-top:50px">Comment your number.</div>
+ <div class="emoji center" style="font-size:150px;margin-top:40px" id="point">👇</div>
+</div>
+
+</div>
+<script src="motion.js"></script><script src="common.js"></script>
+<script>
+const seq=[
+ ...inS('#s1',0),
+ ...rise('#s1 .eyebrow',.2,0,.6,20),
+ ...rise('#s1 .h1 span',.5,.12),
+ ['#grid .card',{opacity:[0,1],y:[80,0],scale:[.92,1]},{duration:.7,ease:E,at:2.0,delay:Motion.stagger(.5)}],
+ ['#grid .tag',{scale:[.6,1.08,1]},{duration:.5,ease:E,at:2.5,delay:Motion.stagger(.5)}],
+ ...outS('#s1',7.0),
+ ...inS('#s2',7.4),
+ ['#s2 .emoji',{opacity:[0,1],rotate:[-18,0],scale:[.6,1]},{duration:.9,ease:E,at:7.4}],
+ ...rise('#s2 .h2 span',7.7,.1),
+ ['#s2 .chip',{opacity:[0,1],scale:[.7,1]},{duration:.5,ease:E,at:8.8,delay:Motion.stagger(.35)}],
+ ...rise('#s2 .p',10.0,0,.6,30),
+ ...outS('#s2',12.0),
+ ...inS('#s3',12.4),
+ ...rise('#s3 .eyebrow',12.5,0,.6,20),
+ ...rise('#s3 .h2 span',12.7,.1),
+ ...rise('#s3 .label',13.6,0,.7,60),
+ ['#hl1',{backgroundSize:['0% 100%','100% 100%']},{duration:.6,ease:E,at:14.6}],
+ ['#hl2',{backgroundSize:['0% 100%','100% 100%']},{duration:.6,ease:E,at:15.3}],
+ ['#hl3',{backgroundSize:['0% 100%','100% 100%']},{duration:.6,ease:E,at:16.0}],
+ ...rise('#s3 .p',16.6,0,.6,30),
+ ...outS('#s3',19.0),
+ ...inS('#s4',19.4),
+ ...rise('#s4 .eyebrow',19.5,0,.6,20),
+ ...rise('#s4 .h2 span',19.7,.12),
+ ['#s4 .chip',{opacity:[0,1],x:[-80,0]},{duration:.6,ease:E,at:20.6,delay:Motion.stagger(.45)}],
+ ...rise('#s4 .p',22.6,0,.6,30),
+ ...outS('#s4',25.0),
+ ...inS('#s5',25.4),
+ ...rise('#s5 .eyebrow',25.5,0,.6,20),
+ ...rise('#s5 .h2 span',25.7,.15),
+ ['#nogrid .card',{opacity:[0,1],y:[80,0],scale:[.92,1]},{duration:.7,ease:E,at:26.6,delay:Motion.stagger(.45)}],
+ ...rise('#s5 .p',29.2,0,.6,30),
+ ...outS('#s5',31.4),
+ ...inS('#s6',31.8),
+ ...rise('#s6 .h2 span',31.9,.12),
+ ...rise('#s6 .p',33.0,0,.6,30),
+ ['#point',{opacity:[0,1],y:[0,30,0,30,0]},{duration:1.6,ease:'easeInOut',at:33.4}],
+ ...outS('#s6',35.4),
+ ...endCard(35.8),
+];
+document.fonts.ready.then(()=>run(seq,40));
+</script></body></html>

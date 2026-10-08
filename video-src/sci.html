@@ -1,0 +1,141 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="base.css">
+<style>
+.center{text-align:center}
+.big{font-size:230px;font-weight:700;letter-spacing:-.05em;text-align:center;line-height:1;color:var(--text)}
+.sol{font-family:GMono,monospace;font-size:64px;color:var(--brand);text-align:center;letter-spacing:.06em}
+.row{display:flex;align-items:center;gap:40px;margin:0 90px 34px;background:var(--card);border:2px solid var(--border);border-radius:40px;padding:34px 44px}
+.row .emoji{font-size:130px}
+.row .name{font-size:54px;font-weight:600;letter-spacing:-.02em}
+.row .latin{font-size:32px;margin-top:8px}
+.chem{display:flex;justify-content:space-between;align-items:center;margin:0 90px 30px;padding:34px 44px;background:var(--card);border:2px solid var(--border);border-radius:36px;font-size:50px;font-weight:600}
+.chem .m{font-family:GMono,monospace;font-size:38px;color:var(--brand);font-weight:500}
+.chem .arrow{color:var(--muted);font-weight:400}
+#flowerWrap{position:absolute;left:0;right:0;top:640px;height:560px;display:flex;justify-content:center}
+#flowerWrap svg{position:absolute}
+</style></head><body><div class="stage">
+
+<div id="s1" class="scene">
+ <div class="eyebrow mono" style="margin-top:560px">Botany 101</div>
+ <div class="h1" style="margin-top:30px"><span>Meet</span> <span>the</span><br><span>nightshade</span><br><span>family.</span></div>
+ <div class="sol" style="margin-top:60px" id="solan">Solanaceae</div>
+</div>
+
+<div id="s2" class="scene">
+ <div class="eyebrow mono" style="margin-top:560px">How big is it?</div>
+ <div class="big" style="margin-top:40px">≈<span id="count">0</span></div>
+ <div class="h2" style="font-size:80px;margin-top:20px"><span>species.</span></div>
+ <div class="p" style="margin-top:44px">Found on every continent except Antarctica.</div>
+</div>
+
+<div id="s3" class="scene">
+ <div class="eyebrow mono" style="margin-top:400px">Genus <i>Solanum</i></div>
+ <div class="h2" style="margin-top:24px;margin-bottom:70px"><span>Three</span> <span>famous</span><br><span>cousins.</span></div>
+ <div class="row"><div class="emoji">🍅</div><div><div class="name">Tomato</div><div class="latin"><i>Solanum lycopersicum</i></div></div></div>
+ <div class="row"><div class="emoji">🥔</div><div><div class="name">Potato</div><div class="latin"><i>Solanum tuberosum</i></div></div></div>
+ <div class="row"><div class="emoji">🍆</div><div><div class="name">Eggplant</div><div class="latin"><i>Solanum melongena</i></div></div></div>
+</div>
+
+<div id="s4" class="scene">
+ <div class="eyebrow mono" style="margin-top:400px">The family signature</div>
+ <div id="flowerWrap">
+  <svg id="flower" width="560" height="560" viewBox="-100 -100 200 200"><path id="corolla" fill="rgba(236,244,239,.06)" stroke="#ECF4EF" stroke-width="2.4" stroke-linejoin="round"/><circle r="10" fill="#E9B949" id="fdot"/></svg>
+  <svg id="cap" width="560" height="560" viewBox="0 0 100 100"><use href="#mark"/></svg>
+ </div>
+ <div class="h2" id="t1" style="position:absolute;left:0;right:0;top:1260px;font-size:84px"><span>Five</span> <span>petals,</span> <span>fused.</span></div>
+ <div class="h2" id="t2" style="position:absolute;left:0;right:0;top:1260px;font-size:84px"><span>Five</span> <span>green</span> <span>sepals.</span></div>
+ <div class="p" id="t2p" style="position:absolute;left:0;right:0;top:1480px">The star-shaped cap on every tomato and eggplant.</div>
+ <div class="p" id="t3p" style="position:absolute;left:0;right:0;top:1480px;color:var(--brand)">It's also our logo.</div>
+</div>
+
+<div id="s5" class="scene">
+ <div class="emoji center" style="font-size:280px;margin-top:440px" id="chili">🌶️</div>
+ <div class="sol" style="margin-top:40px"><i>Capsicum</i></div>
+ <div class="h2" style="margin-top:30px;font-size:84px"><span>The</span> <span>only</span> <span>plants</span><br><span>that</span> <span>make</span> <span>capsaicin.</span></div>
+ <div class="p" style="margin-top:40px">The compound behind a chili's heat.</div>
+</div>
+
+<div id="s6" class="scene">
+ <div class="eyebrow mono" style="margin-top:420px">Built-in chemistry</div>
+ <div class="h2" style="margin-top:24px;margin-bottom:70px"><span>Every</span> <span>plant</span><br><span>has</span> <span>a</span> <span>signature.</span></div>
+ <div class="chem"><span>🥔 Potato</span><span class="arrow">→</span><span class="m">solanine</span></div>
+ <div class="chem"><span>🍅 Tomato</span><span class="arrow">→</span><span class="m">tomatine</span></div>
+ <div class="chem"><span>🌶️ Chili</span><span class="arrow">→</span><span class="m">capsaicin</span></div>
+ <div class="p" style="margin-top:40px">Natural compounds plants make to defend themselves.</div>
+</div>
+
+<div id="s7" class="scene">
+ <div class="eyebrow mono" style="margin-top:480px">Unexpected relatives</div>
+ <div class="h2" style="margin-top:24px;margin-bottom:60px"><span>Also</span> <span>in</span> <span>the</span> <span>family.</span></div>
+ <div class="center"><span class="chip">Tobacco</span><span class="chip">Petunia</span><br><span class="chip">Goji</span><span class="chip">Harankash</span><span class="chip">Tomatillo</span></div>
+</div>
+
+</div>
+<script src="motion.js"></script><script src="common.js"></script>
+<script>
+// fused 5-lobed corolla path
+(function(){let d='';const R=88,r=52,n=5;for(let i=0;i<n;i++){const a=(i/n)*2*Math.PI-Math.PI/2,b=a+Math.PI/n,c=a-Math.PI/n;
+ const p=(ang,rad)=>[Math.cos(ang)*rad,Math.sin(ang)*rad];const [x0,y0]=p(c,r),[x1,y1]=p(a,R),[x2,y2]=p(b,r);
+ const [cx1,cy1]=p(a-.32,R*1.02),[cx2,cy2]=p(a+.32,R*1.02);
+ d+=(i?'':`M${x0.toFixed(1)} ${y0.toFixed(1)} `)+`Q${cx1.toFixed(1)} ${cy1.toFixed(1)} ${x1.toFixed(1)} ${y1.toFixed(1)} Q${cx2.toFixed(1)} ${cy2.toFixed(1)} ${x2.toFixed(1)} ${y2.toFixed(1)} `;}
+ const el=document.getElementById('corolla');el.setAttribute('d',d+'Z');const L=el.getTotalLength();el.style.strokeDasharray=L;el.style.strokeDashoffset=L;window.CL=L;})();
+const seq=[
+ ...inS('#s1',0),
+ ...rise('#s1 .eyebrow',.2,0,.6,20),
+ ...rise('#s1 .h1 span',.5,.12),
+ ['#solan',{opacity:[0,1],letterSpacing:['.4em','.06em']},{duration:1.2,ease:E,at:1.6}],
+ ...outS('#s1',4.0),
+ ...inS('#s2',4.4),
+ ...rise('#s2 .eyebrow',4.5,0,.6,20),
+ ['#s2 .big',{opacity:[0,1],scale:[.8,1]},{duration:.6,ease:E,at:4.7}],
+ ...rise('#s2 .h2 span',5.4,0,.6,30),
+ ...rise('#s2 .p',6.6,0,.6,30),
+ ...outS('#s2',9.0),
+ ...inS('#s3',9.4),
+ ...rise('#s3 .eyebrow',9.5,0,.6,20),
+ ...rise('#s3 .h2 span',9.7,.1),
+ ['#s3 .row',{opacity:[0,1],x:[-100,0]},{duration:.7,ease:E,at:10.8,delay:Motion.stagger(.6)}],
+ ...outS('#s3',15.4),
+ ...inS('#s4',15.8),
+ ...rise('#s4 .eyebrow',15.9,0,.6,20),
+ ['#corolla',{strokeDashoffset:[window.CL,0]},{duration:1.6,ease:E,at:16.2}],
+ ['#corolla',{fill:['rgba(236,244,239,0)','rgba(236,244,239,.10)']},{duration:.6,at:17.6}],
+ ['#fdot',{scale:[0,1]},{duration:.5,ease:E,at:17.4}],
+ ...rise('#t1 span',16.6,.12),
+ ['#t1',{opacity:[1,0]},{duration:.4,at:19.6}],
+ ['#flower',{opacity:[1,0],scale:[1,.85]},{duration:.6,ease:E,at:19.6}],
+ ['#cap',{opacity:[0,1],rotate:[-72,0],scale:[.6,1]},{duration:1.2,ease:E,at:19.8}],
+ ...rise('#t2 span',20.0,.12),
+ ...rise('#t2p',20.9,0,.6,30),
+ ['#t2p',{opacity:[1,0]},{duration:.4,at:22.6}],
+ ...rise('#t3p',22.9,0,.6,30),
+ ...outS('#s4',24.6),
+ ...inS('#s5',25.0),
+ ['#chili',{opacity:[0,1],rotate:[-18,0],scale:[.6,1]},{duration:.9,ease:E,at:25.0}],
+ ['#s5 .sol',{opacity:[0,1]},{duration:.6,at:25.4}],
+ ...rise('#s5 .h2 span',25.7,.1),
+ ...rise('#s5 .p',27.2,0,.6,30),
+ ...outS('#s5',29.6),
+ ...inS('#s6',30.0),
+ ...rise('#s6 .eyebrow',30.1,0,.6,20),
+ ...rise('#s6 .h2 span',30.3,.1),
+ ['#s6 .chem',{opacity:[0,1],x:[-100,0]},{duration:.7,ease:E,at:31.4,delay:Motion.stagger(.55)}],
+ ...rise('#s6 .p',33.4,0,.6,30),
+ ...outS('#s6',36.0),
+ ...inS('#s7',36.4),
+ ...rise('#s7 .eyebrow',36.5,0,.6,20),
+ ...rise('#s7 .h2 span',36.7,.1),
+ ['#s7 .chip',{opacity:[0,1],scale:[.7,1]},{duration:.5,ease:E,at:37.6,delay:Motion.stagger(.3)}],
+ ...outS('#s7',40.6),
+ ...endCard(41.0),
+];
+// counter driven by a dummy element's opacity proxy
+const proxy=document.createElement('div');proxy.style.cssText='position:absolute;width:0;height:0;opacity:0';document.body.appendChild(proxy);
+seq.push([proxy,{opacity:[0,1]},{duration:1.6,ease:E,at:4.7}]);
+const cnt=document.getElementById('count');
+document.fonts.ready.then(()=>{run(seq,45);
+ const orig=Object.getOwnPropertyDescriptor(Object.getPrototypeOf(window.ctl),'time');
+ const c=window.ctl;
+ window.ctl={set time(t){c.time=t;const v=Math.max(0,Math.min(1,(t-4.7)/1.6));const e=1-Math.pow(1-v,3);cnt.textContent=Math.round(e*2700).toLocaleString('en-US');},get time(){return c.time}};
+ window.ctl.time=0;
+});
+</script></body></html>

@@ -1,0 +1,5 @@
+video-src/node_modules/
+video-src/package*.json
+video-src/frames/
+video-src/*.woff2
+video-src/motion.js
