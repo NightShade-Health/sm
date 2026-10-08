@@ -13,7 +13,7 @@ This repo holds the public media (videos/, images/) and the video pipeline (vide
 - **Metricool**: brand "NightShade Health", blogId `7310267`, timezone `Africa/Cairo`. Facebook page 1148472931673146, Instagram `nightshade.health`, Threads `nightshade.health`. Free plan: no Drive integration, no LinkedIn/X, monthly cap on scheduled posts (check in the account). Every Instagram post needs an image or video.
 - **Typefully**: social_set_id `341801`. X `@NightShadeHealt`, LinkedIn company page `nightshadehealth`. Free quota: 10 posts/month. Video upload needs S3, which may be blocked, so LinkedIn and X are text-only for now.
 - **Google Drive** folder "NightShade Health": `1I-CCAjUxBwSlvTf59FpCN4b66P5SJD8Z` (Videos `1ocOmpkqOEExUt1yHzeF9e1ecQfSwLf1F`, Images `12GCLITET4dAk9mexyLCM98RcjeoCuOjv`).
-- **Content calendar (Google Sheet)**: `1QkmiSXKQuEXJ-3cmdLWDk44PXJ4wmhJKYYQqImFGkF0`. Tabs: "Read me", "Calendar" (A1:M92, 91 posts, Oct 12 2026 to Jan 10 2027; Status in column L: Draft / Approved / Scheduled / Posted / Hold), "Videos".
+- **Content calendar (Google Sheet)**: `1QkmiSXKQuEXJ-3cmdLWDk44PXJ4wmhJKYYQqImFGkF0`. Tabs: "Read me", "Calendar" (A1:M118, 117 posts incl. 26 Facebook-only on Wed/Sat, Oct 12 2026 to Jan 10 2027; Status in column L: Draft / Approved / Scheduled / Posted / Hold), "Videos".
 
 ## Weekly automation (target)
 Every week: read Approved rows for the coming week, render any missing videos and image cards, push them to this repo, schedule in Metricool (Facebook, Instagram, Threads) and Typefully (LinkedIn, X text), then set those rows' Status to Scheduled. Keep the Approved step unless Mohamed says otherwise.
