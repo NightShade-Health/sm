@@ -22,6 +22,8 @@ Every week: read Approved rows for the coming week, render any missing videos an
 - No medical or health claims. Botany, cooking and label-reading only.
 - Never mention medicine or pharmaceutical checking before the launch reveal. Rows marked Hold stay unscheduled until Mohamed sets the launch week.
 - Never use the word "Safe" (the app says "Fits you").
+- Nothing about the scanner or scanning (no scan lines, phones, app screens or barcodes) until Mohamed says so.
+- NSX score: tease only. Never explain what NSX stands for, what it measures or how it works. Teasers: 6 Nov, 27 Nov, 11 Dec, 13 Dec video (tag #NSXscore).
 - Brand: "NightShade Health" / "نايت شيد هيلث". Mohamed is a native Arabic speaker; the Arabic captions are his to edit.
 - All new videos use the science style of Botany 101 (`video-src/sci.html`).
 - Mohamed travels 22 Nov to 3 Dec: weeks 7 and 8 must be scheduled before he leaves.
@@ -41,6 +43,6 @@ Every week: read Approved rows for the coming week, render any missing videos an
 - The lantern (15 Nov)
 - Breakfast table (22 Nov)
 - Every plant has a signature (6 Dec)
-- The scan teaser (13 Dec; no app screens, no medicines)
+- NSX score teaser (13 Dec; tease only, never explain NSX; no scanner, no app screens, no medicines)
 - Holiday table (27 Dec)
 - Nightshade or not? (10 Jan)
