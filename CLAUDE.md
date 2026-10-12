@@ -36,6 +36,13 @@ Every week: read Approved rows for the coming week, render any missing videos an
 - Scenes: `sci.html` (Botany 101, 45 s) and `dyk-long.html` (Did you know?, 40 s). Shared files: `base.css` (brand tokens, layout) and `common.js` (logo mark, top bar, end card, animation helpers). Each scene sets `window.ctl` (a paused Motion timeline) and `window.DURATION`.
 - Brand: background #07090A, card #131A18, text #ECF4EF, green #6EC38C, shaded sepal #2E6A48, saffron #E9B949 (centre dot and at most one highlight). One easing: cubic-bezier(.2,.8,.2,1). The logo is drawn from the brand description; swap in the real SVG when available.
 
+## Remotion pipeline (`remotion/`, landing-page style: preferred for new media)
+- Look: full-bleed moody food photo, the landing page's dark gradient, real lockup (`public/brand/lockup-en.svg`), green uppercase overline, big Sora headline, glass callout cards with a saffron dot and connector (`src/kit.tsx`). No phone, scan frame, app screen or NSX scale.
+- Photos: `public/photos/` (generated with Figma AI, `team::1646878914606332007`, model gemini-3.1-flash-image; prompt for low-key, near-black, warm side light, dark space for text, no text/logos).
+- `npm install` once, then `npx remotion still src/index.ts <id> out/<id>.png` (feed 1080x1350) or `npx remotion render src/index.ts botany-101 out/botany-101.mp4 --codec=h264 --crf=18` (Reel 1080x1920). Convert stills to JPEG (Instagram API needs JPEG) into `images/`.
+- Compositions: family, label-spotting, koshari, question (stills), botany-101 (44 s Reel). Callout `point` coordinates are in output pixels; check every render visually.
+- Remotion's licence is free for companies of up to 3 people.
+
 ## Videos to make (science style, English + Arabic)
 - Arabic version of Botany 101
 - Stem or root? (1 Nov)
