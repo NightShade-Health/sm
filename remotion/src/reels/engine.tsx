@@ -32,6 +32,7 @@ export type SceneSpec = {
   anchor?: [number, number];
   /** Blur-to-sharp: the photo starts blurred and comes into focus when the answer lands. */
   reveal?: boolean;
+  lantern?: boolean;
 };
 
 type Transition = NonNullable<SceneSpec['transition']>;
@@ -186,14 +187,53 @@ export const LogoReveal: React.FC<{at?: number; size: number; style?: React.CSSP
   );
 };
 
+// The harankash lantern in brand style: the five K1 sepals hang closed as a lantern around a glowing
+// saffron berry, then open out into the logo (the husk *is* the five sepals). Same motion rules as the
+// logo reveal: sepals 80 ms apart, ease-brand, the dot pops once, one sepal sinks to shade.
+export const LanternToLogo: React.FC<{at?: number; size: number; style?: React.CSSProperties}> = ({at = 0, size, style}) => {
+  const f = useCurrentFrame() - at;
+  const k = {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'} as const;
+  const grow = (i: number) => interpolate(f, [i * 2.4, i * 2.4 + 16], [0, 1], {...k, easing: EASE});
+  const open = interpolate(f, [44, 78], [0, 1], {...k, easing: EASE});
+  const berry = interpolate(f, [8, 26], [0, 1], {...k, easing: EASE});
+  const pop = interpolate(f, [70, 76, 82], [1, 1.12, 1], {...k, easing: EASE});
+  const sink = interpolate(f, [78, 90], [0, 1], {...k, easing: EASE});
+  const glow = interpolate(f, [8, 30, 78, 120], [0, 0.75, 0.6, 0.32], k);
+  const lerp = (a: number, b: number) => a + (b - a) * open;
+  const by = lerp(74, 50);
+  return (
+    <div style={{position: 'absolute', width: size, height: size, ...style}}>
+      <div style={{position: 'absolute', left: -size * 0.45, top: -size * 0.45 + ((by - 50) / 100) * size, width: size * 1.9, height: size * 1.9, borderRadius: '50%', opacity: glow, background: `radial-gradient(circle, ${C.saffron}40 0%, ${C.brand}12 40%, transparent 68%)`}} />
+      <svg viewBox="0 0 100 100" width={size} height={size} style={{position: 'absolute', inset: 0, overflow: 'visible'}}>
+        <g transform={`translate(0 ${lerp(-16, 0)}) translate(50 50) scale(0.93) translate(-50 -50)`}>
+          <path d="M50 50 C50 40 52 30 57 22" stroke={C.shade} strokeWidth={2.2} fill="none" strokeLinecap="round" opacity={(1 - open) * grow(0)} />
+          <circle cx={50} cy={by} r={lerp(13, 8) * berry * pop} fill={C.saffron} />
+          {K1.map((d, i) => {
+            const A = i * 72;
+            const theta = lerp(180 + (A - 144) * 0.22, A);
+            const g = grow(i);
+            const sx = lerp(2.0, 1);
+            const sy = lerp(1.05, 1) * (0.2 + 0.8 * g) - (i === 1 ? 0.04 * sink : 0);
+            const fill = i === 1 ? mix(C.brand, C.shade, sink) : C.brand;
+            return (
+              <path key={i} d={d} fill={fill} opacity={g} fillOpacity={lerp(0.42, 1)} stroke={C.brand} strokeOpacity={1 - open} strokeWidth={0.7} vectorEffect="non-scaling-stroke"
+                transform={`rotate(${theta} 50 50) translate(50 50) scale(${sx} ${sy}) translate(-50 -50) rotate(${-A} 50 50)`} />
+            );
+          })}
+        </g>
+      </svg>
+    </div>
+  );
+};
+
 const MarkScene: React.FC<{s: SceneSpec; outT?: Transition}> = ({s, outT}) => (
   <Fade inT={s.transition} outT={outT}>
     <AbsoluteFill style={{background: C.bg}} />
-    <LogoReveal at={8} size={460} style={{left: 540 - 230, top: 540}} />
+    {s.lantern ? <LanternToLogo at={6} size={460} style={{left: 540 - 230, top: 560}} /> : <LogoReveal at={8} size={460} style={{left: 540 - 230, top: 540}} />}
     <div style={{position: 'absolute', left: 72, right: 72, top: 1120, textAlign: 'center'}}>
-      {s.overline && <Rise at={40}><Overline>{s.overline}</Overline></Rise>}
-      {s.headline && <Rise at={50}><Headline size={s.size ?? 104} style={{marginTop: 22}}>{s.headline}</Headline></Rise>}
-      {s.sub && <Rise at={62}><Sub style={{marginTop: 28}}>{s.sub}</Sub></Rise>}
+      {s.overline && <Rise at={s.lantern ? 84 : 40}><Overline>{s.overline}</Overline></Rise>}
+      {s.headline && <Rise at={s.lantern ? 94 : 50}><Headline size={s.size ?? 104} style={{marginTop: 22}}>{s.headline}</Headline></Rise>}
+      {s.sub && <Rise at={s.lantern ? 106 : 62}><Sub style={{marginTop: 28}}>{s.sub}</Sub></Rise>}
     </div>
   </Fade>
 );

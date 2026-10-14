@@ -111,7 +111,7 @@ export const REELS: Record<string, {date: string; scenes: SceneSpec[]}> = {
         sec: 6.5, transition: 'dot', photo: 'tomato-calyx.jpg', overline: 'Same family, same part', headline: 'The green star on a tomato.',
         callouts: [{x: 560, y: 1640, title: 'Calyx', detail: 'five sepals', point: [616, 1215], width: 400, at: 40}],
       },
-      {sec: 5, kind: 'mark', transition: 'zoom', overline: 'Five sepals', headline: "It's also our logo."},
+      {sec: 6, kind: 'mark', lantern: true, transition: 'zoom', overline: 'Five sepals', headline: "It's also our logo."},
       {sec: 3.8, kind: 'end'},
     ],
   },
