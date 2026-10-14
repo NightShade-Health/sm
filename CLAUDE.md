@@ -25,7 +25,7 @@ Every week: read Approved rows for the coming week, render any missing videos an
 - Nothing about the scanner or scanning (no scan lines, phones, app screens or barcodes) until Mohamed says so.
 - NSX score: tease only. Never explain what NSX stands for, what it measures or how it works. Teasers: 6 Nov, 27 Nov, 11 Dec, 13 Dec video (tag #NSXscore).
 - Brand: "NightShade Health" / "نايت شيد هيلث". Mohamed is a native Arabic speaker; the Arabic captions are his to edit.
-- All new videos use the science style of Botany 101 (`video-src/sci.html`).
+- All new videos and images use the Remotion landing-page style (`remotion/`). `video-src/` is the older illustrated pipeline.
 - Mohamed travels 22 Nov to 3 Dec: weeks 7 and 8 must be scheduled before he leaves.
 
 ## Video pipeline (`video-src/`)
@@ -43,13 +43,7 @@ Every week: read Approved rows for the coming week, render any missing videos an
 - Compositions: family, label-spotting, koshari, question (stills), botany-101 (44 s Reel). Callout `point` coordinates are in output pixels; check every render visually.
 - Remotion's licence is free for companies of up to 3 people.
 
-## Videos to make (science style, English + Arabic)
-- Arabic version of Botany 101
-- Stem or root? (1 Nov)
-- Pepper or not? (8 Nov)
-- The lantern (15 Nov)
-- Breakfast table (22 Nov)
-- Every plant has a signature (6 Dec)
-- NSX score teaser (13 Dec; tease only, never explain NSX; no scanner, no app screens, no medicines)
-- Holiday table (27 Dec)
-- Nightshade or not? (10 Jan)
+## Sunday reels (Remotion, `remotion/src/reels/specs.ts`, rendered to `videos/`)
+- Done: Botany 101 v2 (18 Oct), Did you know? v2 (25 Oct), Stem or root? (1 Nov), Pepper or not? (8 Nov), The lantern (15 Nov), Breakfast table (22 Nov), Every plant has a signature (6 Dec), NSX score teaser (13 Dec), Holiday table (27 Dec), Nightshade or not? (10 Jan).
+- Render one: `npx remotion render src/index.ts <id> out/<id>.mp4 --codec=h264 --crf=18`, then `ffmpeg -i out/<id>.mp4 -c copy -movflags +faststart ../videos/nightshade-<id>-en.mp4`.
+- To do: Arabic versions (on-screen text in Arabic).
