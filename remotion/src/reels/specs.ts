@@ -12,6 +12,8 @@ const quiz = (photo: string, q: string, at: [number, number], yes: boolean, note
   overline: 'Nightshade or not?',
   headline: q,
   answer: {text: yes ? YES : NO, tone: yes ? 'yes' : 'no', at: 34, note},
+  transition: 'zoom',
+  reveal: true,
 });
 
 export const REELS: Record<string, {date: string; scenes: SceneSpec[]}> = {
@@ -28,7 +30,7 @@ export const REELS: Record<string, {date: string; scenes: SceneSpec[]}> = {
         ],
       },
       {
-        sec: 5, photo: 'spice-jars-tall.jpg', overline: 'Even the spice jar', headline: 'Ground from peppers.',
+        sec: 5, transition: 'dot', photo: 'spice-jars-tall.jpg', overline: 'Even the spice jar', headline: 'Ground from peppers.',
         callouts: [
           {x: 72, y: 1480, title: 'Chili flakes', chip: YES, point: [298, 1296], width: 330},
           {x: 640, y: 1480, title: 'Cayenne', chip: YES, point: [768, 1231], width: 290},
@@ -36,18 +38,18 @@ export const REELS: Record<string, {date: string; scenes: SceneSpec[]}> = {
         ],
       },
       {
-        sec: 4.6, photo: 'goji-tomatoes.jpg', overline: 'And a few surprises', headline: 'Goji berries, too.',
+        sec: 4.6, transition: 'zoom', photo: 'goji-tomatoes.jpg', overline: 'And a few surprises', headline: 'Goji berries, too.',
         callouts: [
           {x: 72, y: 1690, title: 'Goji berries', detail: 'Lycium barbarum', chip: YES, point: [421, 1523], width: 560},
           {x: 640, y: 1100, title: 'Tomatoes', chip: YES, point: [842, 1393], width: 290},
         ],
       },
       {
-        sec: 4.6, photo: 'harankash.jpg', overline: 'And in Egypt', headline: 'Harankash. حرنكش.', sub: 'The cape gooseberry, Physalis.',
+        sec: 4.6, transition: 'dot', photo: 'harankash.jpg', overline: 'And in Egypt', headline: 'Harankash. حرنكش.', sub: 'The cape gooseberry, Physalis.',
         callouts: [{x: 560, y: 1640, title: 'Harankash', chip: YES, point: [729, 1392], width: 320}],
       },
       {
-        sec: 6.2, photo: 'not-nightshades.jpg', overline: 'Plot twist', headline: 'Not nightshades.',
+        sec: 6.2, transition: 'zoom', photo: 'not-nightshades.jpg', overline: 'Plot twist', headline: 'Not nightshades.',
         callouts: [
           {x: 72, y: 920, title: 'Sweet potato', chip: NO, tone: 'no', point: [168, 1296], width: 420},
           {x: 560, y: 920, title: 'Onion', chip: NO, tone: 'no', point: [632, 1296], width: 420},
@@ -64,7 +66,7 @@ export const REELS: Record<string, {date: string; scenes: SceneSpec[]}> = {
     scenes: [
       {sec: 4, photo: 'potato-sprouts.jpg', overline: 'Botany 101', headline: 'Stem or root?', sub: 'Two lookalikes from two different plant families.'},
       {
-        sec: 7, photo: 'potato-sprouts.jpg', zoom: [1.05, 1.15], origin: [600, 1100], overline: 'The potato', headline: 'A swollen stem.', sub: 'Botanists call it a tuber.',
+        sec: 7, transition: 'zoom', photo: 'potato-sprouts.jpg', zoom: [1.05, 1.15], origin: [600, 1100], overline: 'The potato', headline: 'A swollen stem.', sub: 'Botanists call it a tuber.',
         callouts: [
           {x: 600, y: 760, title: 'Eye', detail: 'a bud', point: [739, 1182], width: 300, at: 40},
           {x: 72, y: 1580, title: 'Sprout', detail: 'a new shoot', point: [334, 907], width: 380, at: 70},
@@ -72,7 +74,7 @@ export const REELS: Record<string, {date: string; scenes: SceneSpec[]}> = {
         ],
       },
       {
-        sec: 7, photo: 'sweet-potato-roots.jpg', overline: 'The sweet potato', headline: 'A storage root.', sub: 'It belongs to the morning glory family.',
+        sec: 7, transition: 'dot', photo: 'sweet-potato-roots.jpg', overline: 'The sweet potato', headline: 'A storage root.', sub: 'It belongs to the morning glory family.',
         callouts: [
           {x: 560, y: 1640, title: 'Storage root', detail: 'no eyes', point: [778, 1360], width: 420, at: 40},
           {x: 72, y: 1780, title: 'Sweet potato', chip: NO, tone: 'no', width: 520, at: 80},
@@ -101,15 +103,15 @@ export const REELS: Record<string, {date: string; scenes: SceneSpec[]}> = {
     scenes: [
       {sec: 4.2, photo: 'harankash.jpg', overline: 'Botany 101', headline: 'Why does harankash wear a lantern?', size: 104},
       {
-        sec: 6.5, photo: 'harankash.jpg', zoom: [1.1, 1.35], origin: [600, 1250], overline: 'The papery husk', headline: "It's the calyx.",
+        sec: 6.5, transition: 'zoom', photo: 'harankash.jpg', zoom: [1.1, 1.35], origin: [600, 1250], overline: 'The papery husk', headline: "It's the calyx.",
         sub: 'The flower\'s five sepals, grown big around the fruit.',
         callouts: [{x: 560, y: 1640, title: 'Husk', detail: 'five sepals', point: [648, 1150], width: 400, at: 40}],
       },
       {
-        sec: 6.5, photo: 'tomato-calyx.jpg', overline: 'Same family, same part', headline: 'The green star on a tomato.',
+        sec: 6.5, transition: 'dot', photo: 'tomato-calyx.jpg', overline: 'Same family, same part', headline: 'The green star on a tomato.',
         callouts: [{x: 560, y: 1640, title: 'Calyx', detail: 'five sepals', point: [616, 1215], width: 400, at: 40}],
       },
-      {sec: 4.5, kind: 'mark', overline: 'Five sepals', headline: "It's also our logo."},
+      {sec: 4.5, kind: 'mark', transition: 'zoom', overline: 'Five sepals', headline: "It's also our logo."},
       {sec: 3.8, kind: 'end'},
     ],
   },
@@ -128,7 +130,7 @@ export const REELS: Record<string, {date: string; scenes: SceneSpec[]}> = {
         ],
       },
       {
-        sec: 7, photo: 'breakfast.jpg', overline: 'The sides', headline: "Here's where they hide.", size: 96,
+        sec: 7, transition: 'dot', anchor: [541, 1037], photo: 'breakfast.jpg', overline: 'The sides', headline: "Here's where they hide.", size: 96,
         callouts: [
           {x: 72, y: 1500, title: 'Tomato slices', chip: YES, point: [250, 1118], width: 380, at: 24},
           {x: 560, y: 1500, title: 'Pickled peppers', chip: YES, point: [428, 859], width: 420, at: 44},
@@ -143,10 +145,10 @@ export const REELS: Record<string, {date: string; scenes: SceneSpec[]}> = {
     date: '6 Dec',
     scenes: [
       {sec: 4.2, photo: 'veg-flatlay-tall.jpg', overline: 'Built-in chemistry', headline: 'Every plant has a signature.'},
-      {sec: 4.6, photo: 'veg-flatlay-tall.jpg', zoom: [1.4, 1.55], origin: [447, 1199], overline: 'Potato', headline: 'Solanine.', callouts: [{x: 560, y: 1640, title: 'Potato', detail: 'solanine', point: [447, 1199], width: 400, at: 24}]},
-      {sec: 4.6, photo: 'tomato-calyx.jpg', overline: 'Tomato', headline: 'Tomatine.', callouts: [{x: 560, y: 1640, title: 'Tomato', detail: 'tomatine', point: [616, 1215], width: 400, at: 24}]},
-      {sec: 4.6, photo: 'peppers-chilies.jpg', zoom: [1.3, 1.45], origin: [625, 1490], overline: 'Chili', headline: 'Capsaicin.', callouts: [{x: 72, y: 1700, title: 'Chili', detail: 'capsaicin', point: [625, 1490], width: 400, at: 24}]},
-      {sec: 5, photo: 'spice-jars-tall.jpg', overline: 'Why?', headline: 'Natural compounds plants make to defend themselves.', size: 92},
+      {sec: 4.6, transition: 'zoom', photo: 'veg-flatlay-tall.jpg', zoom: [1.4, 1.55], origin: [447, 1199], overline: 'Potato', headline: 'Solanine.', callouts: [{x: 560, y: 1640, title: 'Potato', detail: 'solanine', point: [447, 1199], width: 400, at: 24}]},
+      {sec: 4.6, transition: 'dot', photo: 'tomato-calyx.jpg', overline: 'Tomato', headline: 'Tomatine.', callouts: [{x: 560, y: 1640, title: 'Tomato', detail: 'tomatine', point: [616, 1215], width: 400, at: 24}]},
+      {sec: 4.6, transition: 'dot', photo: 'peppers-chilies.jpg', zoom: [1.3, 1.45], origin: [625, 1490], overline: 'Chili', headline: 'Capsaicin.', callouts: [{x: 72, y: 1700, title: 'Chili', detail: 'capsaicin', point: [625, 1490], width: 400, at: 24}]},
+      {sec: 5, transition: 'zoom', photo: 'spice-jars-tall.jpg', overline: 'Why?', headline: 'Natural compounds plants make to defend themselves.', size: 92},
       {sec: 3.8, kind: 'end'},
     ],
   },
@@ -165,7 +167,7 @@ export const REELS: Record<string, {date: string; scenes: SceneSpec[]}> = {
         ],
       },
       {
-        sec: 6.5, photo: 'holiday-table.jpg', zoom: [1.1, 1.2], overline: 'Easy swaps', headline: 'Same feast, new twists.', size: 96,
+        sec: 6.5, transition: 'zoom', photo: 'holiday-table.jpg', zoom: [1.1, 1.2], overline: 'Easy swaps', headline: 'Same feast, new twists.', size: 96,
         callouts: [
           {x: 72, y: 1460, title: 'Sweet potato & carrot', detail: 'instead of potatoes', chip: 'Swap', tone: 'keep', width: 700, at: 24},
           {x: 72, y: 1660, title: 'Cumin & olive oil', detail: 'instead of paprika', chip: 'Swap', tone: 'keep', width: 700, at: 50},
