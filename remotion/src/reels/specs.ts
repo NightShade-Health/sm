@@ -132,7 +132,7 @@ export const REELS: Record<string, {date: string; scenes: SceneSpec[]}> = {
         callouts: [
           {x: 72, y: 1500, title: 'Tomato slices', chip: YES, point: [250, 1118], width: 380, at: 24},
           {x: 560, y: 1500, title: 'Pickled peppers', chip: YES, point: [428, 859], width: 420, at: 44},
-          {x: 560, y: 1700, title: 'Shatta', chip: YES, point: [541, 1037], width: 290, at: 64},
+          {x: 600, y: 600, title: 'Shatta', chip: YES, point: [541, 1037], width: 290, at: 64},
         ],
       },
       {sec: 4.2, kind: 'end', headline: 'Nightshade-free basics.', sub: 'The sides are where they hide.'},
@@ -143,9 +143,9 @@ export const REELS: Record<string, {date: string; scenes: SceneSpec[]}> = {
     date: '6 Dec',
     scenes: [
       {sec: 4.2, photo: 'veg-flatlay-tall.jpg', overline: 'Built-in chemistry', headline: 'Every plant has a signature.'},
-      {sec: 4.6, photo: 'veg-flatlay-tall.jpg', zoom: [1.4, 1.55], origin: [447, 1199], overline: 'Potato', headline: 'Solanine.', callouts: [{x: 560, y: 1640, title: 'Potato', detail: 'solanine', width: 400, at: 24}]},
+      {sec: 4.6, photo: 'veg-flatlay-tall.jpg', zoom: [1.4, 1.55], origin: [447, 1199], overline: 'Potato', headline: 'Solanine.', callouts: [{x: 560, y: 1640, title: 'Potato', detail: 'solanine', point: [447, 1199], width: 400, at: 24}]},
       {sec: 4.6, photo: 'tomato-calyx.jpg', overline: 'Tomato', headline: 'Tomatine.', callouts: [{x: 560, y: 1640, title: 'Tomato', detail: 'tomatine', point: [616, 1215], width: 400, at: 24}]},
-      {sec: 4.6, photo: 'peppers-chilies.jpg', zoom: [1.3, 1.45], origin: [625, 1490], overline: 'Chili', headline: 'Capsaicin.', callouts: [{x: 72, y: 1700, title: 'Chili', detail: 'capsaicin', width: 400, at: 24}]},
+      {sec: 4.6, photo: 'peppers-chilies.jpg', zoom: [1.3, 1.45], origin: [625, 1490], overline: 'Chili', headline: 'Capsaicin.', callouts: [{x: 72, y: 1700, title: 'Chili', detail: 'capsaicin', point: [625, 1490], width: 400, at: 24}]},
       {sec: 5, photo: 'spice-jars-tall.jpg', overline: 'Why?', headline: 'Natural compounds plants make to defend themselves.', size: 92},
       {sec: 3.8, kind: 'end'},
     ],

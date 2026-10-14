@@ -1,7 +1,7 @@
 import React from 'react';
 import {AbsoluteFill, Img, interpolate, random, staticFile, useCurrentFrame} from 'remotion';
-import {C, EASE, MONO, SANS} from '../brand';
-import {Handle, Headline, Lockup, Overline, Photo, Rise, Sub, useIn} from '../kit';
+import {C, MONO, SANS} from '../brand';
+import {Handle, Headline, Lockup, Overline, Rise, Sub, useIn} from '../kit';
 
 // 13 Dec teaser. Tease only: never says what NSX stands for or what the number measures.
 export const NSX_FRAMES = 540;
@@ -22,9 +22,8 @@ export const NsxTeaser: React.FC = () => {
   const outro = interpolate(f, [420, 440], [1, 0], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
   return (
     <AbsoluteFill style={{background: C.bg, fontFamily: SANS}}>
-      <AbsoluteFill style={{opacity: 0.35}}>
-        <Photo src="photos/label-aisle.jpg" zoom={[1.15, 1.3]} textAt="bottom" dim={0.95} />
-      </AbsoluteFill>
+      {/* Plain brand glow only: no photo, so nothing hints at what NSX measures. */}
+      <AbsoluteFill style={{background: `radial-gradient(900px 700px at 50% 42%, rgba(110,195,140,.10), transparent 70%), radial-gradient(700px 600px at 50% 105%, rgba(46,106,72,.22), transparent 70%)`}} />
       <Lockup />
       <div style={{opacity: outro}}>
         <Img src={staticFile('brand/mark.svg')} style={{position: 'absolute', left: 540 - 130, top: 430, width: 260, height: 260, opacity: mark, transform: `rotate(${(1 - mark) * -144}deg) scale(${0.5 + 0.5 * mark})`}} />

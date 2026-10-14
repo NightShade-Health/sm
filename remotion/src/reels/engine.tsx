@@ -52,6 +52,19 @@ const Answer: React.FC<{text: string; tone: Tone; at: number; note?: string}> = 
   );
 };
 
+/** Pulsing saffron ring that marks which item a quiz question is about. */
+const Marker: React.FC<{at: [number, number]}> = ({at}) => {
+  const f = useCurrentFrame();
+  const p = useIn(6, 14);
+  const pulse = 1 + 0.12 * Math.sin(f / 5);
+  return (
+    <svg style={{position: 'absolute', inset: 0, width: '100%', height: '100%', overflow: 'visible', opacity: p}}>
+      <circle cx={at[0]} cy={at[1]} r={70 * pulse} fill="none" stroke={C.saffron} strokeWidth={6} />
+      <circle cx={at[0]} cy={at[1]} r={12} fill={C.saffron} />
+    </svg>
+  );
+};
+
 const PhotoScene: React.FC<{s: SceneSpec}> = ({s}) => {
   const f = useCurrentFrame();
   const {durationInFrames} = useVideoConfig();
@@ -77,6 +90,7 @@ const PhotoScene: React.FC<{s: SceneSpec}> = ({s}) => {
         <div style={{position: 'absolute', left: 72, right: 72, bottom: 180}}>{text}</div>
       )}
       {s.callouts?.map((c, i) => <Callout key={i} {...c} point={c.point && move(c.point)} at={c.at ?? 24 + i * 18} />)}
+      {s.answer && s.origin && <Marker at={s.origin} />}
       {s.answer && <Answer {...s.answer} at={s.answer.at ?? 30} />}
     </Fade>
   );
