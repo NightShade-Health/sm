@@ -11,19 +11,20 @@ export const useIn = (at = 0, dur = 18) => {
 };
 
 /** Full-bleed photo with a slow push-in and the landing page's bottom-up darkening. */
-export const Photo: React.FC<{src: string; zoom?: [number, number]; focus?: string; dim?: number; textAt?: 'top' | 'bottom'}> = ({
+export const Photo: React.FC<{src: string; zoom?: [number, number]; focus?: string; dim?: number; textAt?: 'top' | 'bottom'; origin?: [number, number]}> = ({
   src,
   zoom = [1.04, 1.12],
   focus = 'center',
   dim = 0.82,
   textAt = 'bottom',
+  origin,
 }) => {
   const f = useCurrentFrame();
   const {durationInFrames} = useVideoConfig();
   const s = interpolate(f, [0, Math.max(1, durationInFrames - 1)], zoom);
   return (
     <AbsoluteFill style={{backgroundColor: C.bg}}>
-      <Img src={staticFile(src)} style={{width: '100%', height: '100%', objectFit: 'cover', objectPosition: focus, transform: `scale(${s})`}} />
+      <Img src={staticFile(src)} style={{width: '100%', height: '100%', objectFit: 'cover', objectPosition: focus, transform: `scale(${s})`, transformOrigin: origin ? `${origin[0]}px ${origin[1]}px` : 'center'}} />
       {/* Darken behind the text, as on the landing page; a lighter vignette on the opposite edge. */}
       <AbsoluteFill
         style={{
