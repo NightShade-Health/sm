@@ -46,4 +46,7 @@ Every week: read Approved rows for the coming week, render any missing videos an
 ## Sunday reels (Remotion, `remotion/src/reels/specs.ts`, rendered to `videos/`)
 - Done: Botany 101 v2 (18 Oct), Did you know? v2 (25 Oct), Stem or root? (1 Nov), Pepper or not? (8 Nov), The lantern (15 Nov), Breakfast table (22 Nov), Every plant has a signature (6 Dec), NSX score teaser (13 Dec), Holiday table (27 Dec), Nightshade or not? (10 Jan).
 - Render one: `npx remotion render src/index.ts <id> out/<id>.mp4 --codec=h264 --crf=18`, then `ffmpeg -i out/<id>.mp4 -c copy -movflags +faststart ../videos/nightshade-<id>-en.mp4`.
+- Scene transitions (`transition` in a scene spec): `fade`, `zoom` (push into the next shot), `dot` (a saffron dot travels a dotted path from the last shot's subject to the next). Quiz shots open blurred with a saffron marker ring on the item, then sharpen on the answer.
+- Logo moments use `LogoReveal` (engine.tsx), which follows the design system's motion rules. The petals grow in 80 ms apart and the saffron dot pops with one overshoot. One sepal sinks to shade, then the mark turns 72° to rest over 600 ms. Never use the K3 curl (scanning) or the K6 NSX-lit states.
+- Carousel: `carousel-nightshade-or-not` renders one 6480×1350 panorama, cut into 6 slides in `images/carousel-nightshade-or-not/`. Dotted paths cross the slide edges.
 - To do: Arabic versions (on-screen text in Arabic).

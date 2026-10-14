@@ -145,20 +145,58 @@ const PhotoScene: React.FC<{s: SceneSpec; outT?: Transition}> = ({s, outT}) => {
   );
 };
 
-const MarkScene: React.FC<{s: SceneSpec; outT?: Transition}> = ({s, outT}) => {
-  const p = useIn(6, 36);
+// K1 Crown, geometry from the design system (Mark component). Index 1 is the sepal that sinks to shade.
+const K1 = [
+  'M50.00,46.00 C41.38,37.36 45.88,13.60 50.00,1.00 C54.12,13.60 58.62,37.36 50.00,46.00Z',
+  'M53.80,48.76 C59.36,37.89 83.34,34.83 96.60,34.86 C85.89,42.67 64.69,54.30 53.80,48.76Z',
+  'M52.35,53.24 C64.41,55.16 74.73,77.02 78.80,89.64 C68.06,81.87 50.45,65.30 52.35,53.24Z',
+  'M47.65,53.24 C49.55,65.30 31.94,81.87 21.20,89.64 C25.27,77.02 35.59,55.16 47.65,53.24Z',
+  'M46.20,48.76 C35.31,54.30 14.11,42.67 3.40,34.86 C16.66,34.83 40.64,37.89 46.20,48.76Z',
+];
+const mix = (a: string, b: string, t: number) => {
+  const ch = (h: string, i: number) => parseInt(h.slice(1 + i * 2, 3 + i * 2), 16);
+  return '#' + [0, 1, 2].map((i) => Math.round(ch(a, i) + (ch(b, i) - ch(a, i)) * t).toString(16).padStart(2, '0')).join('');
+};
+
+// Brand logo reveal (dur-reveal 1200 ms): petals grow out 80 ms apart, the saffron dot pops
+// (one overshoot only), one sepal sinks to shade; then the launch turn (dur-launch 600 ms, 72°) to rest.
+export const LogoReveal: React.FC<{at?: number; size: number; style?: React.CSSProperties}> = ({at = 0, size, style}) => {
+  const f = useCurrentFrame() - at;
+  const k = {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'} as const;
+  const petal = (i: number) => interpolate(f, [i * 2.4, i * 2.4 + 14], [0, 1], {...k, easing: EASE});
+  const dot = interpolate(f, [16, 23, 28], [0, 1.12, 1], {...k, easing: EASE});
+  const sink = interpolate(f, [24, 36], [0, 1], {...k, easing: EASE});
+  const turn = interpolate(f, [36, 54], [-72, 0], {...k, easing: EASE});
+  const glow = interpolate(f, [16, 40, 90], [0, 0.55, 0.32], k);
   return (
-    <Fade inT={s.transition} outT={outT}>
-      <AbsoluteFill style={{background: C.bg}} />
-      <Img src={staticFile('brand/mark.svg')} style={{position: 'absolute', left: 540 - 220, top: 560, width: 440, height: 440, opacity: p, transform: `rotate(${(1 - p) * -72}deg) scale(${0.6 + 0.4 * p})`}} />
-      <div style={{position: 'absolute', left: 72, right: 72, top: 1120, textAlign: 'center'}}>
-        {s.overline && <Rise at={20}><Overline>{s.overline}</Overline></Rise>}
-        {s.headline && <Rise at={30}><Headline size={s.size ?? 104} style={{marginTop: 22}}>{s.headline}</Headline></Rise>}
-        {s.sub && <Rise at={44}><Sub style={{marginTop: 28}}>{s.sub}</Sub></Rise>}
-      </div>
-    </Fade>
+    <div style={{position: 'absolute', width: size, height: size, ...style}}>
+      <div style={{position: 'absolute', inset: -size * 0.45, borderRadius: '50%', opacity: glow, background: `radial-gradient(circle, ${C.saffron}33 0%, ${C.brand}14 38%, transparent 68%)`}} />
+      <svg viewBox="0 0 100 100" width={size} height={size} style={{position: 'absolute', inset: 0, transform: `rotate(${turn}deg)`}}>
+        <g transform="translate(50 50) scale(0.93) translate(-50 -50)">
+          {K1.map((d, i) => {
+            const p = petal(i);
+            const fill = i === 1 ? mix(C.brand, C.shade, sink) : C.brand;
+            const s = 0.2 + 0.8 * p - (i === 1 ? 0.04 * sink : 0);
+            return <path key={i} d={d} fill={fill} opacity={p} transform={`translate(50 50) scale(${s}) translate(-50 -50)`} />;
+          })}
+          <circle cx={50} cy={50} r={8} fill={C.saffron} transform={`translate(50 50) scale(${dot}) translate(-50 -50)`} />
+        </g>
+      </svg>
+    </div>
   );
 };
+
+const MarkScene: React.FC<{s: SceneSpec; outT?: Transition}> = ({s, outT}) => (
+  <Fade inT={s.transition} outT={outT}>
+    <AbsoluteFill style={{background: C.bg}} />
+    <LogoReveal at={8} size={460} style={{left: 540 - 230, top: 540}} />
+    <div style={{position: 'absolute', left: 72, right: 72, top: 1120, textAlign: 'center'}}>
+      {s.overline && <Rise at={40}><Overline>{s.overline}</Overline></Rise>}
+      {s.headline && <Rise at={50}><Headline size={s.size ?? 104} style={{marginTop: 22}}>{s.headline}</Headline></Rise>}
+      {s.sub && <Rise at={62}><Sub style={{marginTop: 28}}>{s.sub}</Sub></Rise>}
+    </div>
+  </Fade>
+);
 
 export const EndScene: React.FC<{s: SceneSpec; outT?: Transition}> = ({s, outT}) => {
   const p = useIn(8, 40);
