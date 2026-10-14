@@ -2,6 +2,7 @@ import React from 'react';
 import {AbsoluteFill, Img, interpolate, Sequence, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
 import {C, EASE, MONO} from './brand';
 import {Callout, Handle, Headline, Lockup, Overline, Photo, Rise, Sub, useIn} from './kit';
+import {LogoReveal} from './reels/engine';
 
 // 1080x1920 Reel, 30 fps. Photo-led remake of "Botany 101" in the landing page style.
 const FADE = 15;
@@ -68,16 +69,6 @@ const Cousins: React.FC = () => (
   </Scene>
 );
 
-const Mark: React.FC<{at: number}> = ({at}) => {
-  const p = useIn(at, 36);
-  return (
-    <Img
-      src={staticFile('brand/mark.svg')}
-      style={{position: 'absolute', left: 540 - 170, top: 1030, width: 340, height: 340, opacity: p, transform: `rotate(${(1 - p) * -72}deg) scale(${0.6 + 0.4 * p})`}}
-    />
-  );
-};
-
 const Signature: React.FC = () => {
   const f = useCurrentFrame();
   const phase2 = f >= 150;
@@ -92,7 +83,7 @@ const Signature: React.FC = () => {
           <Callout at={70} x={96} y={1100} point={[520, 930]} title="Five petals" detail="fused into one" />
         </div>
       )}
-      {phase2 && <Mark at={152} />}
+      {phase2 && <LogoReveal at={150} size={340} style={{left: 540 - 170, top: 1030}} />}
       <Bottom>
         <Rise at={6}><Overline>The family signature</Overline></Rise>
         {!phase2 ? (
@@ -101,7 +92,7 @@ const Signature: React.FC = () => {
             <Rise at={90}><Sub style={{marginTop: 30}}>The same five sepals sit on top of every tomato and eggplant.</Sub></Rise>
           </div>
         ) : (
-          <Rise at={160}>
+          <Rise at={186}>
             <Headline size={112} style={{marginTop: 22}}>It's also our logo.</Headline>
           </Rise>
         )}
