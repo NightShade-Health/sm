@@ -1,0 +1,532 @@
+<template>
+  <style>
+    @font-face {
+      font-family: "Sora";
+      src: url("assets/fonts/Sora-Variable.woff2") format("woff2");
+      font-weight: 100 800;
+      font-display: block;
+    }
+    @font-face {
+      font-family: "Geist Mono";
+      src: url("assets/fonts/GeistMono-500.woff2") format("woff2");
+      font-weight: 500;
+      font-display: block;
+    }
+    #root {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      color: #ecf4ef;
+      font-family: "Sora", sans-serif;
+    }
+    .j01-bg {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(120% 70% at 50% 58%, #0b100e 0%, #07090a 70%);
+    }
+    .j01-map {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1080px;
+      height: 1920px;
+      overflow: hidden;
+    }
+    .j01-land {
+      fill: #121a17;
+      stroke: rgba(110, 195, 140, 0.42);
+      stroke-width: 1.2px;
+      vector-effect: non-scaling-stroke;
+      stroke-linejoin: round;
+    }
+    .j01-grat {
+      fill: none;
+      stroke: rgba(110, 195, 140, 0.06);
+      stroke-width: 1px;
+      vector-effect: non-scaling-stroke;
+    }
+    .j01-route-dots {
+      fill: none;
+      stroke: #e9b949;
+      stroke-width: 6.5px;
+      stroke-linecap: round;
+    }
+    .j01-scrim {
+      position: absolute;
+      left: 0;
+      width: 1080px;
+      pointer-events: none;
+    }
+    .j01-scrim-top {
+      top: 0;
+      height: 980px;
+      background: linear-gradient(
+        180deg,
+        rgba(7, 9, 10, 0.96) 0%,
+        rgba(7, 9, 10, 0.86) 42%,
+        rgba(7, 9, 10, 0) 100%
+      );
+    }
+    .j01-scrim-bottom {
+      bottom: 0;
+      height: 900px;
+      background: linear-gradient(
+        0deg,
+        rgba(7, 9, 10, 0.97) 0%,
+        rgba(7, 9, 10, 0.88) 50%,
+        rgba(7, 9, 10, 0) 100%
+      );
+    }
+    .j01-vignette {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(90% 60% at 50% 55%, rgba(7, 9, 10, 0) 55%, rgba(7, 9, 10, 0.7) 100%);
+    }
+    .j01-lockup {
+      position: absolute;
+      left: 72px;
+      top: 72px;
+      height: 64px;
+      width: auto;
+      display: block;
+    }
+    .j01-block {
+      position: absolute;
+      left: 72px;
+      width: 936px;
+      display: block;
+    }
+    .j01-overline {
+      display: block;
+      font-family: "Sora", sans-serif;
+      font-weight: 600;
+      font-size: 30px;
+      line-height: 1;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #6ec38c;
+      margin: 0 0 30px 0;
+    }
+    .j01-headline {
+      display: block;
+      margin: 0;
+      font-family: "Sora", sans-serif;
+      font-weight: 700;
+      font-size: 102px;
+      line-height: 1.04;
+      letter-spacing: -0.025em;
+      color: #ecf4ef;
+    }
+    .j01-headline-md {
+      font-size: 94px;
+    }
+    .j01-sub {
+      display: block;
+      margin: 32px 0 0 0;
+      font-family: "Sora", sans-serif;
+      font-weight: 400;
+      font-size: 42px;
+      line-height: 1.32;
+      color: #c4d6cc;
+      max-width: 860px;
+    }
+    .j01-handle {
+      display: block;
+      font-family: "Geist Mono", monospace;
+      font-weight: 500;
+      font-size: 34px;
+      letter-spacing: 0.02em;
+      color: #9db5a8;
+    }
+    .j01-card {
+      position: absolute;
+      left: 0;
+      top: 0;
+      display: block;
+      padding: 18px 26px 20px 26px;
+      background: rgba(19, 26, 24, 0.85);
+      border: 1px solid rgba(110, 195, 140, 0.32);
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+    .j01-card-title {
+      display: block;
+      font-family: "Sora", sans-serif;
+      font-weight: 600;
+      font-size: 38px;
+      line-height: 1.1;
+      color: #ecf4ef;
+    }
+    .j01-card-detail {
+      display: block;
+      margin-top: 8px;
+      font-family: "Geist Mono", monospace;
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 1.1;
+      color: #9db5a8;
+    }
+    .j01-year {
+      position: absolute;
+      left: 0;
+      top: 0;
+      display: block;
+      font-family: "Geist Mono", monospace;
+      font-weight: 500;
+      font-size: 40px;
+      letter-spacing: 0.06em;
+      color: #e9b949;
+      white-space: nowrap;
+    }
+  </style>
+
+  <div id="root" data-composition-id="01-journey" data-width="1080" data-height="1920">
+    <div id="j01-bg" class="clip j01-bg" data-start="0" data-duration="25" data-track-index="0"></div>
+
+    <svg id="j01-map" class="j01-map" viewBox="0 0 1080 1920" xmlns="http://www.w3.org/2000/svg">
+      <g id="j01-mapgroup" data-layout-allow-overflow>
+        <g id="j01-world" class="j01-world">
+          <!--__LAND__-->
+        </g>
+      </g>
+      <g id="j01-overlay" data-layout-allow-overflow>
+        <g id="j01-routes"></g>
+        <g id="j01-pins"></g>
+      </g>
+    </svg>
+
+    <div class="j01-vignette"></div>
+    <div id="j01-scrim-top" class="j01-scrim j01-scrim-top"></div>
+    <div id="j01-scrim-bottom" class="j01-scrim j01-scrim-bottom"></div>
+
+    <div id="j01-cards"></div>
+    <div id="j01-year" class="j01-year">1500s</div>
+
+    <div id="j01-b1" class="j01-block" style="top: 236px">
+      <span id="j01-b1-over" class="j01-overline">Botany 101</span>
+      <h1 id="j01-b1-head" class="j01-headline">Where do nightshades come from?</h1>
+    </div>
+    <div id="j01-b2" class="j01-block" style="top: 236px">
+      <h1 id="j01-b2-head" class="j01-headline">Tomatoes, potatoes and peppers started in the Americas.</h1>
+    </div>
+    <div id="j01-b3" class="j01-block" style="top: 236px">
+      <h1 id="j01-b3-head" class="j01-headline">Ships carried them across the Atlantic in the 1500s.</h1>
+    </div>
+    <div id="j01-b4" class="j01-block" style="top: 236px">
+      <h1 id="j01-b4-head" class="j01-headline">Eggplant came from Asia.</h1>
+      <p id="j01-b4-sub" class="j01-sub">Arab traders brought it to the Mediterranean in the Middle Ages.</p>
+    </div>
+    <div id="j01-b5" class="j01-block" style="top: auto; bottom: 330px">
+      <span id="j01-b5-over" class="j01-overline">Cairo</span>
+      <h1 id="j01-b5-head" class="j01-headline j01-headline-md">Eggplant, tomato and pepper now share one pan of mesa'a'a.</h1>
+    </div>
+    <div id="j01-b6" class="j01-block" style="top: 880px">
+      <h1 id="j01-b6-head" class="j01-headline">Know before you bite.</h1>
+    </div>
+    <div id="j01-b6h" class="j01-block" style="top: 1530px">
+      <span id="j01-b6-handle" class="j01-handle">@nightshade.health</span>
+    </div>
+
+    <img id="j01-lockup" class="j01-lockup" src="assets/brand/lockup-en.svg" alt="NightShade Health" />
+  </div>
+
+  <script src="assets/vendor/gsap.min.js"></script>
+  <script>
+    (function () {
+      /*__GEO__*/
+      const W = 1080, H = 1920, DUR = 25;
+      const $ = (id) => document.getElementById("j01-" + id);
+      const SVGNS = "http://www.w3.org/2000/svg";
+
+      // ---- the one brand ease: cubic-bezier(.2,.8,.2,1) ----
+      function bezier(p1x, p1y, p2x, p2y) {
+        const cx = 3 * p1x, bx = 3 * (p2x - p1x) - cx, ax = 1 - cx - bx;
+        const cy = 3 * p1y, by = 3 * (p2y - p1y) - cy, ay = 1 - cy - by;
+        const sx = (t) => ((ax * t + bx) * t + cx) * t;
+        const sy = (t) => ((ay * t + by) * t + cy) * t;
+        const dx = (t) => (3 * ax * t + 2 * bx) * t + cx;
+        return function (x) {
+          if (x <= 0) return 0;
+          if (x >= 1) return 1;
+          let t = x;
+          for (let i = 0; i < 8; i++) {
+            const e = sx(t) - x, d = dx(t);
+            if (Math.abs(e) < 1e-6) break;
+            if (Math.abs(d) < 1e-6) break;
+            t -= e / d;
+          }
+          let lo = 0, hi = 1;
+          if (Math.abs(sx(t) - x) > 1e-5 || t < 0 || t > 1) {
+            t = x;
+            for (let i = 0; i < 40; i++) {
+              if (sx(t) < x) lo = t; else hi = t;
+              t = (lo + hi) / 2;
+            }
+          }
+          return sy(t);
+        };
+      }
+      const E = bezier(0.2, 0.8, 0.2, 1);
+      const clamp = (v) => (v < 0 ? 0 : v > 1 ? 1 : v);
+      const lin = (t, a, d) => clamp((t - a) / d);
+      const seg = (t, a, d) => E(lin(t, a, d));
+      const mix = (a, b, k) => a + (b - a) * k;
+
+      // ---- camera: world point c lands on screen (540, fy) at zoom s ----
+      const F = GEO.focus;
+      const shots = [
+        { c: F.world, s: 0.48, fy: 1230 },                 // 0  opening (pre-zoom)
+        { c: F.world, s: 0.54, fy: 1230 },                 // 1  world
+        { c: F.americas, s: 2.05, fy: 1230 },              // 2  Americas
+        { c: F.atlantic, s: 1.42, fy: 1230 },              // 3  Atlantic
+        { c: F.southAsia, s: 2.15, fy: 1160 },             // 4  South Asia
+        { c: F.cairo, s: 3.3, fy: 760 },                   // 5  Cairo
+        { c: F.cairo, s: 2.7, fy: 930 },                   // 6  end card
+      ];
+      const moves = [
+        { at: 0.0, dur: 3.0, from: 0, to: 1, dip: 0 },
+        { at: 3.5, dur: 1.7, from: 1, to: 2, dip: 0 },
+        { at: 8.0, dur: 1.7, from: 2, to: 3, dip: 0 },
+        { at: 13.0, dur: 2.0, from: 3, to: 4, dip: 0.42 },
+        { at: 18.0, dur: 1.7, from: 4, to: 5, dip: 0.12 },
+        { at: 21.5, dur: 2.6, from: 5, to: 6, dip: 0 },
+      ];
+      function camAt(t) {
+        let st = { cx: shots[0].c[0], cy: shots[0].c[1], s: shots[0].s, fy: shots[0].fy };
+        for (const m of moves) {
+          if (t < m.at) break;
+          const a = shots[m.from], b = shots[m.to];
+          const e = seg(t, m.at, m.dur);
+          const dip = 1 - m.dip * Math.sin(Math.PI * e);
+          st = {
+            cx: mix(a.c[0], b.c[0], e),
+            cy: mix(a.c[1], b.c[1], e),
+            s: Math.exp(mix(Math.log(a.s), Math.log(b.s), e)) * dip,
+            fy: mix(a.fy, b.fy, e),
+          };
+        }
+        return st;
+      }
+      function toScreen(cam, p) {
+        return [cam.s * (p[0] - cam.cx) + W / 2, cam.s * (p[1] - cam.cy) + cam.fy];
+      }
+
+      // ---- routes: dots at fixed world arclength spacing; head dot travels ----
+      const routeDefs = [
+        { key: "potatoSpain", at: 9.4, dur: 2.0, spacing: 7.5 },
+        { key: "tomatoSpain", at: 9.7, dur: 2.0, spacing: 7.5 },
+        { key: "peppersSpain", at: 10.0, dur: 2.0, spacing: 7.5 },
+        { key: "indiaMed", at: 15.5, dur: 2.0, spacing: 5.2 },
+        { key: "spainCairo", at: 19.25, dur: 1.5, spacing: 3.8 },
+        { key: "medCairo", at: 19.45, dur: 1.3, spacing: 3.8 },
+      ];
+      function pointAt(pts, s) {
+        // pts: [x, y, cumulativeLen]
+        if (s <= 0) return [pts[0][0], pts[0][1]];
+        const L = pts[pts.length - 1][2];
+        if (s >= L) return [pts[pts.length - 1][0], pts[pts.length - 1][1]];
+        let lo = 0, hi = pts.length - 1;
+        while (hi - lo > 1) {
+          const mid = (lo + hi) >> 1;
+          if (pts[mid][2] < s) lo = mid; else hi = mid;
+        }
+        const a = pts[lo], b = pts[hi];
+        const k = (s - a[2]) / (b[2] - a[2] || 1);
+        return [mix(a[0], b[0], k), mix(a[1], b[1], k)];
+      }
+      const routesG = $("routes");
+      const routes = routeDefs.map((r) => {
+        const pts = GEO.routes[r.key];
+        const L = pts[pts.length - 1][2];
+        const dots = [];
+        // start one spacing in so the first dot doesn't sit under the origin pin
+        for (let s = r.spacing * 1.6; s <= L - r.spacing * 1.2; s += r.spacing) dots.push([s, pointAt(pts, s)]);
+        const path = document.createElementNS(SVGNS, "path");
+        path.setAttribute("class", "j01-route-dots");
+        const glow = document.createElementNS(SVGNS, "circle");
+        glow.setAttribute("r", "17");
+        glow.setAttribute("fill", "#E9B949");
+        const head = document.createElementNS(SVGNS, "circle");
+        head.setAttribute("r", "7.5");
+        head.setAttribute("fill", "#E9B949");
+        routesG.appendChild(path);
+        routesG.appendChild(glow);
+        routesG.appendChild(head);
+        return Object.assign({}, r, { pts, L, dots, path, glow, head });
+      });
+
+      // ---- pins + label cards ----
+      const pinDefs = [
+        { key: "potato", at: 5.25, title: "Potato", detail: "the Andes", side: "right", cardOut: 8.0 },
+        { key: "tomato", at: 5.75, title: "Tomato", side: "left", cardOut: 8.0 },
+        { key: "peppers", at: 6.25, title: "Peppers", side: "right", cardOut: 8.0 },
+        { key: "spain", at: 10.9 },
+        { key: "india", at: 15.0, title: "Eggplant", detail: "Asia", side: "below", cardOut: 18.0 },
+        { key: "cairo", at: 20.35 },
+      ];
+      const pinsG = $("pins");
+      const cardsBox = $("cards");
+      const pins = pinDefs.map((p) => {
+        const g = document.createElementNS(SVGNS, "g");
+        const halo = document.createElementNS(SVGNS, "circle");
+        halo.setAttribute("fill", "#E9B949");
+        const ring = document.createElementNS(SVGNS, "circle");
+        ring.setAttribute("fill", "none");
+        ring.setAttribute("stroke", "#E9B949");
+        ring.setAttribute("stroke-width", "2.5");
+        const dot = document.createElementNS(SVGNS, "circle");
+        dot.setAttribute("fill", "#E9B949");
+        dot.setAttribute("stroke", "#07090A");
+        dot.setAttribute("stroke-width", "3");
+        g.appendChild(halo);
+        g.appendChild(ring);
+        g.appendChild(dot);
+        pinsG.appendChild(g);
+        let card = null;
+        if (p.title) {
+          card = document.createElement("div");
+          card.className = "j01-card";
+          const tt = document.createElement("span");
+          tt.className = "j01-card-title";
+          tt.textContent = p.title;
+          card.appendChild(tt);
+          if (p.detail) {
+            const dd = document.createElement("span");
+            dd.className = "j01-card-detail";
+            dd.textContent = p.detail;
+            card.appendChild(dd);
+          }
+          cardsBox.appendChild(card);
+        }
+        return Object.assign({}, p, { w: GEO.pins[p.key], g, halo, ring, dot, card });
+      });
+
+      // ---- text blocks: rise/fade in (blur 8→0, y +24→0), short fade out ----
+      const textEls = [
+        { id: "b1-over", at: 0.3, out: 3.5 },
+        { id: "b1-head", at: 0.42, out: 3.5 },
+        { id: "b2-head", at: 3.75, out: 8.0 },
+        { id: "b3-head", at: 8.25, out: 13.0 },
+        { id: "b4-head", at: 13.25, out: 18.0 },
+        { id: "b4-sub", at: 13.7, out: 18.0 },
+        { id: "b5-over", at: 18.25, out: 21.3 },
+        { id: "b5-head", at: 18.37, out: 21.3 },
+        { id: "b6-head", at: 22.2, out: 99 },
+        { id: "b6-handle", at: 22.6, out: 99 },
+      ].map((d) => Object.assign(d, { el: $(d.id) }));
+      // year label anchored on the tomato route at ~52% of its length
+      const yearRoute = GEO.routes.tomatoSpain;
+      const yearAnchor = pointAt(yearRoute, yearRoute[yearRoute.length - 1][2] * 0.5);
+
+      const mapGroup = $("mapgroup"), world = $("world"), overlay = $("overlay");
+      const scrimTop = $("scrim-top"), scrimBottom = $("scrim-bottom");
+      const year = $("year"), lockup = $("lockup");
+      const f2 = (v) => Math.round(v * 100) / 100;
+
+      function render(t) {
+        const cam = camAt(t);
+        // world layer (vector re-rendered each frame; hairline stays 1px)
+        world.setAttribute(
+          "transform",
+          `translate(${f2(W / 2 - cam.s * cam.cx)} ${f2(cam.fy - cam.s * cam.cy)}) scale(${cam.s.toFixed(5)})`
+        );
+        const endDim = seg(t, 21.5, 1.2);
+        mapGroup.setAttribute("opacity", f2(seg(t, 0, 1.4) * mix(1, 0.26, endDim)));
+        overlay.setAttribute("opacity", f2(mix(1, 0.14, endDim)));
+
+        // routes
+        for (const r of routes) {
+          const k = seg(t, r.at, r.dur);
+          if (k <= 0) {
+            r.path.setAttribute("d", "");
+            r.head.setAttribute("opacity", "0");
+            r.glow.setAttribute("opacity", "0");
+            continue;
+          }
+          const sNow = k * r.L;
+          let d = "";
+          for (const [s, p] of r.dots) {
+            if (s > sNow) break;
+            const q = toScreen(cam, p);
+            d += `M${f2(q[0])} ${f2(q[1])}h0`;
+          }
+          r.path.setAttribute("d", d);
+          const hp = toScreen(cam, pointAt(r.pts, sNow));
+          const headFade = 1 - lin(t, r.at + r.dur + 0.1, 0.4);
+          r.head.setAttribute("cx", f2(hp[0]));
+          r.head.setAttribute("cy", f2(hp[1]));
+          r.head.setAttribute("opacity", f2(headFade));
+          r.glow.setAttribute("cx", f2(hp[0]));
+          r.glow.setAttribute("cy", f2(hp[1]));
+          r.glow.setAttribute("opacity", f2(0.28 * headFade));
+        }
+
+        // pins + cards
+        for (const p of pins) {
+          const q = toScreen(cam, p.w);
+          const pop = seg(t, p.at, 0.5);
+          const pulse = lin(t, p.at, 1.3);
+          p.g.setAttribute("opacity", pop > 0 ? "1" : "0");
+          p.dot.setAttribute("cx", f2(q[0]));
+          p.dot.setAttribute("cy", f2(q[1]));
+          p.dot.setAttribute("r", f2(10 * pop));
+          p.halo.setAttribute("cx", f2(q[0]));
+          p.halo.setAttribute("cy", f2(q[1]));
+          p.halo.setAttribute("r", f2(20 * pop));
+          p.halo.setAttribute("opacity", f2(0.2 * pop));
+          p.ring.setAttribute("cx", f2(q[0]));
+          p.ring.setAttribute("cy", f2(q[1]));
+          p.ring.setAttribute("r", f2(10 + 38 * E(pulse)));
+          p.ring.setAttribute("opacity", pulse > 0 && pulse < 1 ? f2(0.75 * (1 - pulse)) : "0");
+          if (p.card) {
+            const cin = seg(t, p.at + 0.15, 0.6);
+            const cout = lin(t, p.cardOut, 0.4);
+            const op = cin * (1 - cout);
+            const gap = 30;
+            let x = q[0], y = q[1], sx = "-50%", sy = "0%";
+            if (p.side === "right") { x += gap; sx = "0%"; sy = "-50%"; }
+            else if (p.side === "left") { x -= gap; sx = "-100%"; sy = "-50%"; }
+            else { y += gap; }
+            p.card.style.opacity = f2(op);
+            p.card.style.filter = `blur(${f2(6 * (1 - cin) + 4 * cout)}px)`;
+            p.card.style.transform = `translate(${f2(x)}px, ${f2(y + 16 * (1 - cin))}px) translate(${sx}, ${sy})`;
+          }
+        }
+
+        // "1500s"
+        const yq = toScreen(cam, yearAnchor);
+        const yin = seg(t, 10.7, 0.7), yout = lin(t, 13.0, 0.35);
+        year.style.opacity = f2(yin * (1 - yout));
+        year.style.filter = `blur(${f2(8 * (1 - yin))}px)`;
+        year.style.transform = `translate(${f2(yq[0])}px, ${f2(yq[1] - 34 + 24 * (1 - yin))}px) translate(-50%, -100%)`;
+
+        // text blocks
+        for (const d of textEls) {
+          const k = seg(t, d.at, 0.7);
+          const o = lin(t, d.out, 0.35);
+          d.el.style.opacity = f2(k * (1 - o));
+          d.el.style.filter = `blur(${f2(8 * (1 - k) + 6 * o)}px)`;
+          d.el.style.transform = `translateY(${f2(24 * (1 - k) - 12 * o)}px)`;
+        }
+
+        // scrims: top for beats 1-4, bottom for beat 5
+        scrimTop.style.opacity = f2(1 - 0.75 * seg(t, 18.0, 0.8) + 0.75 * seg(t, 21.4, 0.8));
+        scrimBottom.style.opacity = f2(seg(t, 18.0, 0.8) * (1 - seg(t, 21.4, 0.8)));
+
+        // lockup: fades in, then travels from the corner to the end card (layout props stay crisp)
+        const lk = seg(t, 21.5, 1.0);
+        lockup.style.opacity = f2(seg(t, 0.1, 0.8));
+        lockup.style.top = f2(mix(72, 720, lk)) + "px";
+        lockup.style.height = f2(mix(64, 110, lk)) + "px";
+      }
+
+      render(0);
+      const tl = gsap.timeline({ paused: true });
+      const clock = { t: 0 };
+      tl.to(clock, { t: DUR, duration: DUR, ease: "none", onUpdate: () => render(clock.t) }, 0);
+      window.__timelines["01-journey"] = tl;
+    })();
+  </script>
+</template>

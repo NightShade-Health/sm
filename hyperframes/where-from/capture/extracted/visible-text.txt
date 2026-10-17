@@ -1,0 +1,9 @@
+## Scenes and exact copy (verbatim, already edited)
+
+1. ~3.5 s. World map fades/zooms in. Overline "BOTANY 101". Headline "Where do nightshades come from?"
+2. ~4.5 s. Camera to the Americas. Pins with label cards: "Potato" + "the Andes" (Peru ~13°S 72°W); "Tomato" (~19°N 99°W) and "Peppers" (~17°N 96°W) in Mexico. Headline "Tomatoes, potatoes and peppers started in the Americas."
+3. ~5 s. Camera pulls out over the Atlantic; three dotted routes from the American pins to Spain (~37°N 6°W). Mono label "1500s". Headline "Ships carried them across the Atlantic in the 1500s."
+4. ~5 s. Camera to South Asia. Pin "Eggplant" + "Asia" (India ~22°N 79°E). Dotted route west through the Middle East to the Mediterranean. Headline "Eggplant came from Asia." Sub "Arab traders brought it to the Mediterranean in the Middle Ages."
+5. ~4 s. Camera to Egypt; routes converge on a Cairo pin (~30°N 31°E). Overline "CAIRO". Headline "Eggplant, tomato and pepper now share one pan of mesa'a'a."
+6. ~3.5 s. End card: map dims, large lockup at left, headline "Know before you bite.", handle "@nightshade.health" in mono bottom left.
+

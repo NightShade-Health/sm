@@ -50,3 +50,7 @@ Every week: read Approved rows for the coming week, render any missing videos an
 - The Lantern reel uses `LanternToLogo`: the brand-style sepals hang as a translucent lantern around a glowing saffron berry, then open into the logo. Other logo moments use `LogoReveal` (engine.tsx), which follows the design system's motion rules. The petals grow in 80 ms apart and the saffron dot pops with one overshoot. One sepal sinks to shade, then the mark turns 72° to rest over 600 ms. Never use the K3 curl (scanning) or the K6 NSX-lit states.
 - Carousel: `carousel-nightshade-or-not` renders one 6480×1350 panorama, cut into 6 slides in `images/carousel-nightshade-or-not/`. Dotted paths cross the slide edges.
 - Arabic: `botany-101-ar` (same composition with `lang: "ar"`; `LangCtx` in kit.tsx switches text to Alexandria, right-to-left, and the Arabic lockup) → `videos/nightshade-botany-101-v2-ar.mp4`. To do: Arabic versions of the other reels.
+
+## HyperFrames pipeline (`hyperframes/`, HTML → MP4)
+- `where-from/`: "Where do nightshades come from?" (29 Nov), a 25 s silent map reel built with HyperFrames' faceless-explainer workflow → `videos/nightshade-where-from-en.mp4`. On-screen copy edited with the Humanizer skill.
+- Edit `scripts/01-journey.src.html` or `scripts/build-map.mjs`, then `npm install`, `npm run build:map`, `npx hyperframes lint && npx hyperframes check`, `npx hyperframes render --output renders/video.mp4`, and the faststart re-mux into `videos/`.
