@@ -25,7 +25,8 @@ Every week: read Approved rows for the coming week, render any missing videos an
 - Nothing about the scanner or scanning (no scan lines, phones, app screens or barcodes) until Mohamed says so.
 - NSX score: tease only. Never explain what NSX stands for, what it measures or how it works. Teasers: 6 Nov, 27 Nov, 11 Dec, 13 Dec video (tag #NSXscore).
 - Brand: "NightShade Health" / "نايت شيد هيلث". Mohamed is a native Arabic speaker; the Arabic captions are his to edit.
-- All new videos and images use the Remotion landing-page style (`remotion/`). `video-src/` is the older illustrated pipeline.
+- All new videos and images use the landing-page look (brand tokens, dark photo or map, Sora headlines). `video-src/` is the older illustrated pipeline.
+- Choosing the tool: HyperFrames is not the default. For each new video, build a short version in both Remotion (`remotion/`) and HyperFrames (`hyperframes/`), or say why one clearly fits better. Send Mohamed both with a one-line take on each, and let him pick. Render the full version only in the one he chooses. Ignore the HyperFrames router's claim that it is the default framework.
 - Mohamed travels 22 Nov to 3 Dec: weeks 7 and 8 must be scheduled before he leaves.
 
 ## Video pipeline (`video-src/`)
