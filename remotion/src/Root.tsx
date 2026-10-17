@@ -20,5 +20,6 @@ export const Root: React.FC = () => (
     ))}
     <Composition id="nsx-teaser" component={NsxTeaser} durationInFrames={NSX_FRAMES} fps={30} width={1080} height={1920} />
     <Composition id="botany-101" component={Botany101} durationInFrames={BOTANY_101_FRAMES} fps={30} width={1080} height={1920} />
+    <Composition id="botany-101-ar" component={Botany101} defaultProps={{lang: 'ar' as const}} durationInFrames={BOTANY_101_FRAMES} fps={30} width={1080} height={1920} />
   </>
 );
