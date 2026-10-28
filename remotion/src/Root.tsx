@@ -4,6 +4,7 @@ import './fonts';
 import {Botany101, BOTANY_101_FRAMES} from './Botany101';
 import {NightshadeOrNotCarousel, SLIDE_H, SLIDE_W} from './Carousel';
 import {Family, Koshari, LabelSpotting, Question} from './Stills';
+import {Card, CARDS} from './Cards';
 import {Reel, reelFrames} from './reels/engine';
 import {NsxTeaser, NSX_FRAMES} from './reels/NsxTeaser';
 import {REELS} from './reels/specs';
@@ -11,6 +12,9 @@ import {REELS} from './reels/specs';
 export const Root: React.FC = () => (
   <>
     <Still id="carousel-nightshade-or-not" component={NightshadeOrNotCarousel} width={SLIDE_W * 6} height={SLIDE_H} />
+ {Object.entries(CARDS).map(([id, spec]) => (
+      <Still key={id} id={`card-${id}`} component={Card} defaultProps={{spec}} width={1080} height={1350} />
+    ))}
     <Still id="family" component={Family} width={1080} height={1350} />
     <Still id="label-spotting" component={LabelSpotting} width={1080} height={1350} />
     <Still id="koshari" component={Koshari} width={1080} height={1350} />
