@@ -179,4 +179,84 @@ export const CARDS: Record<string, CardSpec> = {
     split: [{photo: 'sweet-potato-roots.jpg', label: 'Team batata', chip: 'Comment 1', tone: 'keep'}, {photo: 'potato-sprouts.jpg', label: 'Team batates', chip: 'Comment 2', tone: 'keep'}],
     overline: 'Vote in the comments', headline: 'Batata or batates?',
   },
+
+  // ---- November ----
+  'peppers-split': {
+    split: [{photo: 'peppers-chilies.jpg', label: 'Bell pepper & chili', chip: 'Nightshade', tone: 'yes'}, {photo: 'peppercorns.jpg', label: 'Black pepper', chip: 'Not a nightshade', tone: 'no'}],
+    overline: 'Same word, different plants', headline: 'One word. Very different plants.', size: 88,
+  },
+  'pepper-words-1': {photo: 'peppers-chilies.jpg', overline: 'Read the label', headline: 'Pepper words to look for.', sub: 'Seven names on a label, one plant.', slide: [1, 4]},
+  'pepper-words-2': {photo: 'peppers-chilies.jpg', shade: 0.6, overline: 'All from the pepper plant', headline: 'Look for these', size: 88, items: [{title: 'Capsicum', chip: 'Nightshade'}, {title: 'Paprika', chip: 'Nightshade'}, {title: 'Pimiento', chip: 'Nightshade'}], slide: [2, 4]},
+  'pepper-words-3': {photo: 'peppers-chilies.jpg', shade: 0.6, overline: 'All from the pepper plant', headline: 'And these', size: 88, items: [{title: 'Cayenne', chip: 'Nightshade'}, {title: 'Red pepper', chip: 'Nightshade'}, {title: 'Chili', chip: 'Nightshade'}], slide: [3, 4]},
+  'pepper-words-4': {photo: 'peppers-chilies.jpg', shade: 0.6, overline: 'The easy one to miss', headline: 'E160c', size: 120, sub: 'Paprika extract, added for colour. Still the pepper plant.', items: [{title: 'E160c', detail: 'paprika extract', chip: 'Nightshade'}], slide: [4, 4]},
+  'heat-swap': {
+    photo: 'heat-flatlay.jpg', overline: 'Heat without nightshades', headline: 'Want a kick? Try these.',
+    groups: [{chip: 'Not nightshades', tone: 'keep', items: ['Ginger', 'Garlic', 'Black pepper', 'Mustard', 'Horseradish', 'Wasabi']}],
+  },
+  'nsx-1': {big: {text: 'NSX'}},
+  berries: {
+    photo: 'berries-cut.jpg', overline: 'Botany 101', headline: "Botanically, they're all berries.", size: 92,
+    sub: 'A berry is a fleshy fruit grown from a single flower, usually with many seeds.',
+    groups: [{chip: 'Berry', tone: 'keep', items: ['Tomato', 'Eggplant', 'Chili']}],
+  },
+  'tomato-disguise-1': {photo: 'tomato-products.jpg', overline: 'Read the label', headline: 'Tomato in disguise.', sub: 'Four ways tomato shows up in an ingredient list.', slide: [1, 4]},
+  'tomato-disguise-2': {photo: 'tomato-products.jpg', shade: 0.6, overline: 'Easy to spot', headline: 'The obvious ones', size: 88, items: [{title: 'Tomato paste', chip: 'Nightshade'}, {title: 'Tomato purée', chip: 'Nightshade'}, {title: 'Ketchup', chip: 'Nightshade'}], slide: [2, 4]},
+  'tomato-disguise-3': {photo: 'tomato-products.jpg', shade: 0.6, overline: 'Easy to miss', headline: 'Tomato powder', size: 96, sub: 'Common in instant noodles and soup packets.', items: [{title: 'Tomato powder', detail: 'noodles, soups', chip: 'Nightshade'}], slide: [3, 4]},
+  'tomato-disguise-4': {photo: 'tomato-products.jpg', shade: 0.6, overline: 'Check what is inside', headline: '"Vegetable powder"', size: 96, sub: 'It can include tomato. If you see it, check the full list.', items: [{title: 'Vegetable powder', chip: 'Check', tone: 'no'}], slide: [4, 4]},
+  salad: {
+    photo: 'salad.jpg', overline: 'Egyptian kitchen', headline: 'A nightshade-free salad that tastes like home.', size: 84,
+    groups: [{chip: 'Keep', tone: 'keep', items: ['Cucumber', 'Lettuce', 'Radish', 'Carrot', 'Parsley', 'Sumac']}],
+    note: {strong: 'Dress it simply.', soft: 'Lemon, olive oil, salt.'},
+  },
+  'canned-ful': {
+    photo: 'breakfast.jpg', shade: 0.45, overline: 'Read the label', headline: 'Canned ful check.',
+    items: [{title: 'Plain ful', detail: 'fava beans, water, salt', chip: 'Keep', tone: 'keep'}, {title: 'Spicy or Alexandrian', detail: 'may add tomato, chili, "spices"', chip: 'Check', tone: 'no'}],
+    note: {strong: 'Read before you pour.'},
+  },
+  'green-shakshuka': {
+    overline: 'Nightshade-free recipe', headline: 'Green shakshuka.', size: 120,
+    sub: 'Soften leeks and garlic in olive oil, add spinach and cumin, crack in the eggs and cover until set. Finish with feta.',
+    groups: [{chip: 'Keep', tone: 'keep', items: ['Leeks', 'Garlic', 'Spinach', 'Cumin', 'Eggs', 'Feta']}],
+    note: {strong: 'All the comfort.', soft: 'No tomato, no peppers.'},
+  },
+  'ful-debate': {
+    photo: 'breakfast.jpg', overline: 'The big ful debate', headline: 'Tahini, or oil and lemon?',
+    items: [{title: 'Tahini', chip: 'Comment 1', tone: 'keep'}, {title: 'Oil and lemon', chip: 'Comment 2', tone: 'keep'}],
+  },
+  'street-food-1': {photo: 'koshari.jpg', overline: 'Egyptian street food 101', headline: 'Where nightshades usually hide.', slide: [1, 4]},
+  'street-food-2': {photo: 'koshari.jpg', shade: 0.6, overline: 'Where it hides', headline: 'Koshari & hawawshi', size: 88, items: [{title: 'Koshari', detail: 'the salsa and shatta', chip: 'Check', tone: 'no'}, {title: 'Hawawshi', detail: 'peppers and chili inside', chip: 'Check', tone: 'no'}], slide: [2, 4]},
+  'street-food-3': {photo: 'koshari.jpg', shade: 0.6, overline: 'Where it hides', headline: 'Fries & shawarma', size: 88, items: [{title: 'Fries', detail: 'the potato itself', chip: 'Nightshade'}, {title: 'Shawarma', detail: 'the spice mix and sauces', chip: 'Check', tone: 'no'}], slide: [3, 4]},
+  'street-food-4': {photo: 'koshari.jpg', shade: 0.6, overline: 'Before you order', headline: 'Ask about the sauce.', size: 104, sub: 'Most of it hides in sauces and spice mixes, not in the main ingredients.', slide: [4, 4]},
+  snacks: {
+    photo: 'label-aisle.jpg', shade: 0.35, overline: 'Not a potato chip?', headline: 'Still check the flavour.',
+    sub: 'Corn and wheat snacks can carry nightshades too, especially the flavoured ones.',
+    groups: [{chip: 'Check for', tone: 'no', items: ['Paprika', 'Tomato powder', '"Spices"']}],
+  },
+  hawawshi: {
+    overline: 'Egyptian kitchen swap', headline: 'Hawawshi, nightshade-free.', size: 110,
+    groups: [{chip: 'Keep', tone: 'keep', items: ['Minced meat', 'Onion', 'Parsley', 'Garlic', 'Cumin', 'Black pepper']}],
+    note: {strong: 'Skip the bell peppers and chili.', soft: 'Stuff into baladi bread and bake until crisp.'},
+  },
+  'nsx-2': {big: {text: 'NSX', blur: '7'}},
+  'chili-heat': {
+    photo: 'peppers-chilies.jpg', shade: 0.55, overline: 'Botany 101', headline: 'Only Capsicum makes capsaicin.', size: 84,
+    sub: 'Chili heat is measured in Scoville Heat Units, a scale from 1912.',
+    scale: [{label: 'Bell pepper', shu: '0 SHU', level: 0}, {label: 'Jalapeño', shu: '2,500–8,000', level: 1}, {label: 'Cayenne', shu: '30,000–50,000', level: 2}, {label: 'Habanero', shu: '100,000–350,000', level: 3}],
+  },
+
+  // ---- December ----
+  e160c: {
+    photo: 'spice-jars-tall.jpg', shade: 0.55, overline: 'Colour from peppers', headline: 'E160c', size: 200,
+    sub: 'Paprika extract. It gives a red-orange colour to snacks, sausages, sauces and some cheeses.',
+    groups: [{chip: 'Nightshade', tone: NS, items: ['E160c = pepper']}],
+  },
+  'colour-swaps': {
+    overline: 'Colour without paprika', headline: 'Red and gold, no paprika.', size: 92,
+    swatches: [
+      {color: '#E3A62B', label: 'Turmeric', detail: 'gold'},
+      {color: '#8E1F4A', label: 'Beetroot', detail: 'deep red'},
+      {color: '#E8742A', label: 'Carrot', detail: 'orange'},
+      {color: '#A3302E', label: 'Sumac', detail: 'tangy red'},
+    ],
+  },
 };
