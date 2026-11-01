@@ -214,7 +214,7 @@ export const CARDS: Record<string, CardSpec> = {
     note: {strong: 'Read before you pour.'},
   },
   'green-shakshuka': {
-    overline: 'Nightshade-free recipe', headline: 'Green shakshuka.', size: 120,
+    photo: 'green-shakshuka.jpg', overline: 'Nightshade-free recipe', headline: 'Green shakshuka.', size: 112,
     sub: 'Soften leeks and garlic in olive oil, add spinach and cumin, crack in the eggs and cover until set. Finish with feta.',
     groups: [{chip: 'Keep', tone: 'keep', items: ['Leeks', 'Garlic', 'Spinach', 'Cumin', 'Eggs', 'Feta']}],
     note: {strong: 'All the comfort.', soft: 'No tomato, no peppers.'},
@@ -233,7 +233,7 @@ export const CARDS: Record<string, CardSpec> = {
     groups: [{chip: 'Check for', tone: 'no', items: ['Paprika', 'Tomato powder', '"Spices"']}],
   },
   hawawshi: {
-    overline: 'Egyptian kitchen swap', headline: 'Hawawshi, nightshade-free.', size: 110,
+    photo: 'hawawshi.jpg', overline: 'Egyptian kitchen swap', headline: 'Hawawshi, nightshade-free.', size: 100,
     groups: [{chip: 'Keep', tone: 'keep', items: ['Minced meat', 'Onion', 'Parsley', 'Garlic', 'Cumin', 'Black pepper']}],
     note: {strong: 'Skip the bell peppers and chili.', soft: 'Stuff into baladi bread and bake until crisp.'},
   },
