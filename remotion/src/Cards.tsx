@@ -209,7 +209,7 @@ export const CARDS: Record<string, CardSpec> = {
     note: {strong: 'Dress it simply.', soft: 'Lemon, olive oil, salt.'},
   },
   'canned-ful': {
-    photo: 'breakfast.jpg', shade: 0.45, overline: 'Read the label', headline: 'Canned ful check.',
+    photo: 'ful-cans.jpg', overline: 'Read the label', headline: 'Canned ful check.',
     items: [{title: 'Plain ful', detail: 'fava beans, water, salt', chip: 'Keep', tone: 'keep'}, {title: 'Spicy or Alexandrian', detail: 'may add tomato, chili, "spices"', chip: 'Check', tone: 'no'}],
     note: {strong: 'Read before you pour.'},
   },
@@ -220,7 +220,7 @@ export const CARDS: Record<string, CardSpec> = {
     note: {strong: 'All the comfort.', soft: 'No tomato, no peppers.'},
   },
   'ful-debate': {
-    photo: 'breakfast.jpg', overline: 'The big ful debate', headline: 'Tahini, or oil and lemon?',
+    photo: 'ful-bowls.jpg', overline: 'The big ful debate', headline: 'Tahini, or oil and lemon?',
     items: [{title: 'Tahini', chip: 'Comment 1', tone: 'keep'}, {title: 'Oil and lemon', chip: 'Comment 2', tone: 'keep'}],
   },
   'street-food-1': {photo: 'koshari.jpg', overline: 'Egyptian street food 101', headline: 'Where nightshades usually hide.', slide: [1, 4]},
@@ -228,7 +228,7 @@ export const CARDS: Record<string, CardSpec> = {
   'street-food-3': {photo: 'koshari.jpg', shade: 0.6, overline: 'Where it hides', headline: 'Fries & shawarma', size: 88, items: [{title: 'Fries', detail: 'the potato itself', chip: 'Nightshade'}, {title: 'Shawarma', detail: 'the spice mix and sauces', chip: 'Check', tone: 'no'}], slide: [3, 4]},
   'street-food-4': {photo: 'koshari.jpg', shade: 0.6, overline: 'Before you order', headline: 'Ask about the sauce.', size: 104, sub: 'Most of it hides in sauces and spice mixes, not in the main ingredients.', slide: [4, 4]},
   snacks: {
-    photo: 'label-aisle.jpg', shade: 0.35, overline: 'Not a potato chip?', headline: 'Still check the flavour.',
+    photo: 'snack-bags.jpg', overline: 'Not a potato chip?', headline: 'Still check the flavour.',
     sub: 'Corn and wheat snacks can carry nightshades too, especially the flavoured ones.',
     groups: [{chip: 'Check for', tone: 'no', items: ['Paprika', 'Tomato powder', '"Spices"']}],
   },
@@ -246,7 +246,7 @@ export const CARDS: Record<string, CardSpec> = {
 
   // ---- December ----
   e160c: {
-    photo: 'spice-jars-tall.jpg', shade: 0.55, overline: 'Colour from peppers', headline: 'E160c', size: 200,
+    photo: 'red-orange-foods.jpg', shade: 0.2, overline: 'Colour from peppers', headline: 'E160c', size: 200,
     sub: 'Paprika extract. It gives a red-orange colour to snacks, sausages, sauces and some cheeses.',
     groups: [{chip: 'Nightshade', tone: NS, items: ['E160c = pepper']}],
   },
