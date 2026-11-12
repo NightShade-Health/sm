@@ -3,6 +3,8 @@ import {continueRender, delayRender, staticFile} from 'remotion';
 const faces: [string, string, string][] = [
   ['Sora', 'brand/Sora-Variable.woff2', '100 800'],
   ['GeistMono', 'brand/GeistMono-500.woff2', '500'],
+  // The pitch deck's slide HTML names the family with a space.
+  ['Geist Mono', 'brand/GeistMono-500.woff2', '100 900'],
   ['Alexandria', 'brand/Alexandria.woff2', '100 900'],
 ];
 
