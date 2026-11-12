@@ -55,3 +55,9 @@ Every week: read Approved rows for the coming week, render any missing videos an
 ## HyperFrames pipeline (`hyperframes/`, HTML → MP4)
 - `where-from/`: "Where do nightshades come from?" (29 Nov), a 25 s silent map reel built with HyperFrames' faceless-explainer workflow → `videos/nightshade-where-from-en.mp4`. On-screen copy edited with the Humanizer skill.
 - Edit `scripts/01-journey.src.html` or `scripts/build-map.mjs`, then `npm install`, `npm run build:map`, `npx hyperframes lint && npx hyperframes check`, `npx hyperframes render --output renders/video.mp4`, and the faststart re-mux into `videos/`.
+
+## Voiceover (VoiceTut-TTS, Egyptian Arabic + English)
+- Model: `mohammedaly22/VoiceTut-TTS` (Apache-2.0), runs on CPU here (~9 s of work per second of speech). Voices: Arabic "Mohammed", English "Yasmin".
+- Always `normalize=False`. The built-in normalizer turns numbers into Arabic words even in English, and strips Arabic diacritics. Write numbers as words yourself.
+- Arabic: fully diacritize ambiguous words (سَلَطة salad vs سُلْطة power, عِلْم vs عَلَم); only "NightShade Health" stays in English.
+- Check every clip before sending: Whisper (faster-whisper medium) for the words, and the phoneme model `facebook/wav2vec2-xlsr-53-espeak-cv-ft` for Arabic vowels.
